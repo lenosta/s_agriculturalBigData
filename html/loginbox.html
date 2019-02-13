@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" id="industryChainTracing">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>农业监测预警大数据平台</title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <style>
+    body{ background: url("../bgdelet.png") no-repeat center top; background-size: 100%;}
+    .show{display: block;}
+    .meng{position:absolute; top:0;left:0;right:0;bottom:0;margin:auto; background: black; opacity: 0.9; display: none;}
+    .login{ width: 355px; height:326px; position:absolute; top:0;left:0;right:0;bottom:0;margin:auto; border-radius: 5px; overflow: hidden; display: none;}
+    .login .title{ height: 56px;
+        background: url("../images/loginlog_03.png") no-repeat center center;
+    }
+    .login .content{ height: 266px; width: 100%; border: 1px solid #123cb6; box-sizing: border-box; border-top:none; border-radius: 0px 0px 5px 5px; background: #061b47; opacity: 0.5;  position: absolute; }
+    #username,#password,#forget,#submit{ position: absolute; z-index: 10; display: block;}
+    #username{ height: 40px; width: 294px; left: 25px; top:94px; background: #09205c url("../images/loginicon_03.png") no-repeat 11px; border: 1px solid #0097de; box-shadow: 0 0 15px #0097de; border-radius: 3px; text-indent: 52px; color: #458ed8; font-size: 14px; line-height: 40px; }
+    #password{height: 40px; width: 294px; left: 25px; top:154px; background: #051849  url("../images/loginicon_06.png") no-repeat 11px ; border: 1px solid #0097de; box-shadow: 0 0 15px #0097de;border-radius: 3px;  text-indent: 52px; color: #458ed8; font-size: 14px; line-height: 40px;  }
+    #forget{ width: 56px; height: 25px; left: 271px; top:200px; font-size: 12px; color: #b8bbc3; text-decoration: underline;}
+   #submit{height: 40px; width: 294px; left: 25px; top:253px; background: #036eda; cursor: pointer; color: #FFF; border-radius: 5px; font-size: 14px; }
+
+    </style>
+</head>
+<body>
+<input type="button" value="登录" style="font-size: 30px; color: #FFF; cursor: pointer; z-index:10;" onclick="fn()">
+<div class="meng" onclick="closed()"></div>
+<div class="login">
+    <div class="title"></div>
+    <div class="content">
+
+    </div>
+
+        <input type="text" name="username" id="username" placeholder="请输入请您的用户名">
+        <input type="password" name="password" id="password" placeholder="请输入请您的密码">
+        <a href="#" id="forget">忘记密码</a>
+        <input type="submit" id="submit" value="立即登录">
+</div>
+<script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+<script>
+    function fn(){
+       $(" .meng").show();
+        $(" .login").show();
+    };
+    function closed(){
+        $(" .meng").hide();
+        $(" .login").hide();
+    }
+</script>
+</body>
+</html>

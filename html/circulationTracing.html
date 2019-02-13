@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" id="circulationTracing">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>农业监测预警大数据平台</title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" type="text/css" href="../css/jsmind.css">
+    <link rel="stylesheet" type="text/css" href="../css/fyw.css">
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script src="../js/WdatePicker.js"></script>
+
+</head>
+<body>
+<div class="header">
+    <h1><a href="###" class="logo"><img id="headerImg" src="../images/header-zs.png"></a></h1>
+    <div class="headerR">
+        <div class="headerR_r">
+            <a href="navigation.html">返回导航页</a>
+        </div>
+        <ul class="headerR_l">
+            <li class="headerR_lTime">
+                <p>2016/11/11 星期五</p>
+                <p class="headerR_lTimeDay"><span>七天预报</span></p>
+            </li>
+            <li>
+                <p>晴</p>
+                <p><i class="iconfont icon-zhaoshenbian02"></i></p>
+            </li>
+            <li>
+                <p>4-7</p>
+                <p>℃</p>
+            </li>
+            <li>
+                <p>94</p>
+                <p>AQI</p>
+            </li>
+            <li>
+                <p>61</p>
+                <p><i class="iconfont icon-shape6"></i></p>
+            </li>
+            <li>
+                <p>2级</p>
+                <p><i class="iconfont icon-changhongchuifeng"></i></p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="leftBar">
+    <ul>
+        <li style="padding-top: 5px;" onclick="javascript:location.href='industryChainTracing.html'">
+            <i class="iconfont icon-zhuye"></i>
+            <p>追溯预警一张图</p>
+        </li>
+        <li onclick="javascript:location.href='originTracing.html'">
+            <i class="iconfont icon-dizhi"></i>
+            <p>产地追溯</p>
+        </li>
+        <li onclick="javascript:location.href='circulationTracing.html'">
+            <i class="iconfont icon-liutong"></i>
+            <p>流通追溯</p>
+        </li>
+        <li onclick="javascript:location.href='areaTracing.html'">
+            <i class="iconfont icon-xiaoshou"></i>
+            <p>销地追溯</p>
+        </li>
+        <li onclick="javascript:location.href='detectionTracing.html'">
+            <i class="iconfont icon-iconset0398"></i>
+            <p>检测追溯</p>
+        </li>
+
+    </ul>
+</div>
+
+<div class="content">
+   <div class="tab">
+       <div class="tabtitle">
+           <ul>
+               <li class="active" onclick="showTab1(this,'tabcontentc1')">农产品流向追溯</li>
+               <li onclick="showTab2(this,'tabcontentc2')"  class="no-background">农产品流通环节冷库预警</li>
+
+           </ul>
+       </div>
+       <div class="tabcontent">
+              <div  class="tabcontentc tabcontentc1">
+                   <div class="contTit">山东省<span class="xianjiming">五莲县</span><span class="pingzhongming">大蒜</span>流通追溯</div>
+
+                   <div class="inSel">
+
+                       <div class="simSel margin-right-20">
+                           <span id="typeval">五莲县</span><i></i>
+                           <ul class="simSelHide">
+                               <li onclick="selectArea(this.innerHTML)">五莲县</li>
+                               <li onclick="selectArea(this.innerHTML)">寿光县</li>
+                           </ul>
+                       </div>
+                       <div class="simSel simSelChecked  margin-right-20">
+                           <span>品种</span><i></i>
+                           <!--<ul class="simSelHide">-->
+                           <!--<li class="mapChina">畜牧业</li>-->
+                           <!--<li class="mapShandong">种植业</li>-->
+                           <!--</ul>-->
+                           <div class="simSelLayer simAllSel">
+                               <div class="selFooter">
+                                   选择维度
+                                   <div class="allSelect">
+                                       <input type="checkbox" class="chk_1" id="selectAll2">
+                                       <label for="selectAll2"></label>全选
+                                   </div>
+                               </div>
+                               <ul class="selList" id="pingzhong">
+                                   <li class="active">
+                                       <input type="checkbox" class="chk_1" id="n1">
+                                       <label for="n1"></label><b>大蒜</b>
+                                   </li>
+                                   <li>
+                                       <input type="checkbox" class="chk_1" id="n2">
+                                       <label for="n2"></label><b>白菜</b>
+                                   </li>
+                                   <li>
+                                       <input type="checkbox" class="chk_1" id="n3">
+                                       <label for="n3"></label><b>甘蓝</b>
+                                   </li>
+                                   <li>
+                                       <input type="checkbox" class="chk_1" id="n4">
+                                       <label for="n4"></label><b>地瓜</b>
+                                   </li>
+                                   <li>
+                                       <input type="checkbox" class="chk_1" id="n5">
+                                       <label for="n5"></label><b>菜豆</b>
+                                   </li>
+                                   <li>
+                                       <input type="checkbox" class="chk_1" id="n7">
+                                       <label for="n7"></label><b>黄瓜</b>
+                                   </li>
+                                   <li>
+                                       <input type="checkbox" class="chk_1" id="n8">
+                                       <label for="n8"></label><b>花生</b>
+                                   </li>
+                                   <li>
+                                       <input type="checkbox" class="chk_1" id="n9">
+                                       <label for="n9"></label><b>玉米</b>
+                                   </li>
+                               </ul>
+                               <div class="selHeader">
+                                   <button class="button" onclick="selectPinzhong()">确定</button>
+                                   <button class="button">取消</button>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="simSel simSelTime simSelTime1"><input id="DatePicker1"
+                                                                         onclick="WdatePicker({el:'DatePicker1',highLineWeekDay:false,onpicking:selectTime,dateFmt:'yyyy-MM',qsEnabled:false,autoShowQS:false,isShowClear:false,isShowToday:false})"
+                                                                         type="text" class="p_myDatePicker" value="2016-11"/>
+                           <i></i>
+                       </div>
+
+
+                   </div>
+
+                   <ul class="visualMap">
+                       <li class="visualMap1"><p>农产品生产基地</p></li>
+                       <li class="visualMap2"><p>流通节点</p></li>
+                       <li class="visualMap3"><p>销售区域</p></li>
+                       <!--<li class="visualMap4"><p>红色预警</p></li>-->
+                       <!--<li class="visualMap5"><p>橙色预警</p></li>-->
+                       <!--<li class="visualMap6"><p>黄色预警</p></li>-->
+                   </ul>
+                  <div  id="tabcontent1map"></div>
+              </div>
+           <div class="tabcontentc tabcontentc2 ">
+               <div class="contTit">五莲县农作物种植区域冷库分布预警</div>
+
+               <div class="inSel">
+                   <div class="simSel margin-right-20">
+                       <span>五莲县</span><i></i>
+                       <ul class="simSelHide">
+                           <li onclick="selectArea(this.innerHTML)">五莲县</li>
+                           <li onclick="selectArea(this.innerHTML)">寿光县</li>
+                       </ul>
+                   </div>
+                   <div class="simSel simSelTime simSelTime1"><input id="DatePicker3"
+                                                                     onclick="WdatePicker({el:'DatePicker3',highLineWeekDay:false,onpicking:selectTime,dateFmt:'yyyy-MM',qsEnabled:false,autoShowQS:false,isShowClear:false,isShowToday:false})"
+                                                                     type="text" class="p_myDatePicker" value="2016-11"/>
+                       <i></i>
+                   </div>
+
+               </div>
+
+               <ul class="visualMap s1visualMap">
+                   <li class="visualMap1"><p>冷藏库</p></li>
+                   <li class="visualMap2"><p>预警区域</p></li>
+                   <!--<li class="visualMap33"><p>红色预警</p></li>-->
+                   <!--<li class="visualMap44"><p>橙色预警</p></li>-->
+                   <!--<li class="visualMap55"><p>黄色预警</p></li>-->
+               </ul>
+               <ul class="visualMap s2visualMap">
+                   <li class="visualMap3"><p>花生<span>224万亩</span></p></li>
+                   <li class="visualMap4"><p>蔬菜<span>324万亩</span></p></li>
+                   <li class="visualMap5"><p>大蒜<span>424万亩</span></p></li>
+                   <li class="visualMap6"><p>玉米<span>124万亩</span></p></li>
+                   <li class="visualMap7"><p>小麦<span>224万亩</span></p></li>
+                   <li class="visualMap8"><p>地瓜<span>324万亩</span></p></li>
+               </ul>
+               <div  id="tabcontent2map">
+                   <div class="tooltipbox1">
+                       <div class="maptip maptip1">
+                           <p>种植产品：<span>大蒜、蔬菜、玉米</span></p>
+                           <p>种植面积：<span>10万亩</span></p>
+                           <p>附近冷库建设数量：<span>2个，容量3万吨</span></p>
+                           <p>冷库需求：<span>5万吨</span></p>
+                           <p>预警级别：<b>橙色预警</b></p>
+                       </div>
+                   </div>
+                   <div class="tooltipbox2">
+                       <div class="maptip maptip2">
+                           <p>种植产品：<span>玉米</span></p>
+                           <p>种植面积：<span>2万亩</span></p>
+                           <p>附近冷库建设数量：<span>1个，容量1万吨</span></p>
+                           <p>冷库需求：<span>5万吨</span></p>
+                           <p>预警级别：<b>红色预警</b></p>
+                       </div>
+                   </div>
+                   <div class="tooltipbox3">
+                       <div class="maptip maptip3">
+                           <p>种植产品：<span>大蒜、蔬菜、玉米</span></p>
+                           <p>种植面积：<span>3万亩</span></p>
+                           <p>附近冷库建设数量：<span>2个，容量3万吨</span></p>
+                           <p>冷库需求：<span>4万吨</span></p>
+                           <p>预警级别：<b>黄色预警</b></p>
+                       </div>
+                   </div>
+                   <img src="../images/wulianxian3.png">
+               </div>
+           </div>
+
+       </div>
+   </div>
+</div>
+
+<script src="../js/echarts-all-3.js"></script>
+<script src="../js/echarts-engine.js"></script>
+<script src="../js/d3.v4.min.js"></script>
+<script src="../js/commonLibMap.min.js"></script>
+<script src="../js/jquery.mCustomScrollbar.js"></script>
+<script src="../js/jquery-mousewhell.js"></script>
+<script src="../js/circultionTracing.js"></script>
+</body>
+</html>

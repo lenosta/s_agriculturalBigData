@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>农业监测预警大数据平台</title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/credit-evaluation.css">
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script src="../js/WdatePicker.js"></script>
+    <script src="../js/echarts-all-3.js"></script>
+    <script src="../js/echarts-engine.js"></script>
+</head>
+
+<body>
+<div class="header">
+    <h1><a href="###" class="logo"><img id="headerImg" src="../images/header-xy.png"></a></h1>
+    <div class="headerR">
+        <div class="headerR_r">
+            <a href="navigation.html">返回导航页</a>
+        </div>
+        <ul class="headerR_l">
+            <li class="headerR_lTime">
+                <p>2016/11/11 星期五</p>
+                <p class="headerR_lTimeDay"><span>七天预报</span></p>
+            </li>
+            <li>
+                <p>晴</p>
+                <p><i class="iconfont icon-zhaoshenbian02"></i></p>
+            </li>
+            <li>
+                <p>4-7</p>
+                <p>℃</p>
+            </li>
+            <li>
+                <p>94</p>
+                <p>AQI</p>
+            </li>
+            <li>
+                <p>61</p>
+                <p><i class="iconfont icon-shape6"></i></p>
+            </li>
+            <li>
+                <p>2级</p>
+                <p><i class="iconfont icon-changhongchuifeng"></i></p>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+$(function() {
+    var localUrl = window.location.href;
+    var spIndex;
+    if (localUrl.indexOf('/credit') >= 0) { //信用
+        spIndex = 0;
+    } else if (localUrl.indexOf('/industryChainTracing') >= 0) { //追溯
+        spIndex = 1;
+    }
+    else if (localUrl.indexOf('/index') >= 0) { //预警
+        spIndex = 2;
+    }
+   
+    switch(spIndex){
+        case 0: 
+            console.log(0)
+            headerImg('../images/header-xy.png')
+            break;
+        case 1:
+            console.log(1)
+            headerImg('../images/header-zs.png')
+            break;
+        case 2:
+            console.log(2)
+            headerImg('../images/headLogo.png')
+            break;
+        default:
+            break;    
+    }
+    function headerImg(url)
+    {
+        $("#headerImg").attr("src",url)
+    }
+
+})
+</script>
+ <div class="leftBar">
+    <ul>
+        <li style="padding-top: 5px;" class="active">
+            <i class="iconfont icon-zhuye"></i>
+            <p>企业信用一张图</p>
+        </li>
+        <li>
+            <i class="iconfont icon-qitalingyu2"></i>
+            <p>细分领域信用</p>
+        </li>
+        <li>
+            <i class="iconfont icon-loudong"></i>
+            <p>区域企业信用</p>
+        </li>
+        <li>
+            <i class="iconfont icon-yujing-copy"></i>
+            <p>决策预警</p>
+        </li>
+       
+    </ul>
+</div>
+
+<div class="content">
+    <div class="contTit">农业产业链企业信用评估分布</div>
+    <ul class="visualMap">
+        <li class="visualMap1">
+            <p>优质企业</p>
+        </li>
+        <li class="visualMap2">
+            <p>普通企业</p>
+        </li>
+        <li class="visualMap3">
+            <p>黑名单企业</p>
+        </li>
+    </ul>
+    <div class="module module1">
+        <div class="moduleTit overflow-hidden">全省农业产业链企业信用综合指数 </div>
+        <div class="moduleCont">
+            <div class="ceModule1H115 d3-dashboard"></div>
+        </div>
+    </div>
+    <div class="module module2">
+        <div class="moduleTit">决策预警</div>
+        <div class="moduleCont">
+            <div class="jcyj">
+                <dl>
+                    <dt>
+                    <p class="active">优质企业名单</p>
+                    <p>黑名单企业</p>
+                    </dt>
+                    <dd>
+                        <p>山东大成农药股份有限公司</p>
+                        <p>龙口市农业技术推广中心三农服务部</p>
+                        <p>山东百士威农药有限公司</p>
+                        <p>山东万丰源农业发展有限公司</p>
+                        <p>山东弘宇农机股份有限公司</p>
+                    </dd>
+                    <dd style="display: none;">
+                        <p>山东登海种业股份有限公司</p>
+                        <p>山东中农天泰种业有限公司</p>
+                        <p>山东先隆达农药有限公司</p>
+                        <p>烟台守良农业发展有限公司</p>
+                        <p>招远市赛成农业发展有限公司</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="module module3">
+        <div class="moduleTit">细分领域信用</div>
+        <div class="moduleCont">
+            <div id="ceModule3Cont" class="ceModule1H150"></div>
+        </div>
+    </div>
+    <div class="module module4">
+        <div class="moduleTit">企业数量变化趋势</div>
+        <div class="moduleCont">
+            <div id="ceModule4Cont" class="ceModule1H150"></div>
+        </div>
+    </div>
+    <div class="module module5">
+        <div class="moduleTit">产业链企业数量分布</div>
+        <div class="moduleCont">
+            <div id="ceModule5Cont" class="ceModule1H150"></div>
+        </div>
+    </div>
+    <div class="module module7" id="map"></div>
+</div>
+<script src="../js/d3.v4.min.js"></script>
+<script src="../js/commonLibMap.min.js"></script>
+<script src="../js/d3.min.js"></script>
+<script src="../js/d3-charts.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var winH = $(window).height();
+        if(winH <= 670){
+            $("body").height(590);
+        }else{
+            $("body").height(winH - 80);
+        }
+
+        $(".jcyj dt p").on("click", function() {
+            $(this).addClass("active").siblings().removeClass("active");
+            var index = $(this).index();
+            console.log(index)
+            $(".jcyj dl dd").eq(index).show().siblings('dd').hide();
+        })
+    })
+    var ceModule3Cont = charts.init({
+        id: 820,
+        container: "ceModule3Cont",
+        option: {}
+    });
+    var ceModule4Cont = charts.init({
+        id: 825,
+        container: "ceModule4Cont",
+        option: {}
+    });
+    var ceModule5Cont = charts.init({
+        id: 824,
+        container: "ceModule5Cont",
+        option: {}
+    });
+
+    var data = {
+        points: [{
+            "title": "山东济南市综合批发市场",
+            "log": "117",
+            "lat": "36.65",
+            core: 90,
+            star: 4,
+            "icon": {
+                url: '../images/icon_1.png',
+                width: 50,
+                height: 50
+            }
+        }, {
+            "title": "山东青岛畜牧养殖基地",
+            "log": "120.33",
+            "lat": "36.07",
+            core: 90,
+            star: 4,
+            "icon": {
+                url: '../images/icon_2.png',
+                width: 50,
+                height: 50
+            }
+        }, {
+            "title": "山东省威海市批发市场",
+            "log": "122.10",
+            "lat": "37.50",
+            core: 90,
+            star: 4,
+            "icon": {
+                url: '../images/icon_3.png',
+                width: 50,
+                height: 50
+            }
+        }]
+    };
+
+    function clickHandle(event, data) {
+        if (data._type == 'area') {
+            showMap(data.properties.name, false);
+        }}
+
+
+    function mouseOverHandle(event, data) {
+        if (data._type == 'point') {
+            var rect = event.target.getBoundingClientRect();
+            var $tip = $('#map_popOver');
+            if (!$tip.length) {
+                $tip = $('<div id="map_popOver">');
+                $('#map').append($tip);
+            }
+            $tip.html(popOver(data));
+            var offset = $('#map svg').offset();
+            $tip.css({
+                left: (rect.right - rect.width / 2 - offset.left + window.scrollX) + 'px',
+                top: (rect.bottom - rect.height / 2 - offset.top + window.scrollY) + 'px',
+                display: 'block'
+            });
+        }
+    }
+
+    function mouseOutHandle(event, data) {
+        if (!$(event.toElement).is('#map_popOver')) {
+            $('#map_popOver').css({
+                display: 'none'
+            });
+        }
+    }
+
+    function popOver(param) {
+        var star = '';
+        for (var i = 0, len = param.star; i < len; i++) {
+            star += '★';
+        }
+        return '<h4>' + (param.title) + '</h4>' +
+            '<p><span class="import">' + (param.core) + '</span><span>信用评分</span></p>' +
+            '<p><span class="star">' + star + '</span><span>信用等级</span></p>'
+    }
+    commonLib.CMap.config.baseDir = '../geoJson/'
+
+    function showMap(name, isDrill) {
+        var map = new commonLib.CMap({
+            dom: document.getElementById('map'),
+            data: data,
+            mouseOutHandle: mouseOutHandle,
+            mouseOverHandle: mouseOverHandle,
+            clickHandle: isDrill ? clickHandle : null,
+            name: name
+        });
+        return map;
+    }
+
+    var cmap = showMap('山东', false);
+
+
+    var dashboard = d3Charts.chart()
+    // 背景设置
+        .width('100%')
+        .height(115)
+        .backgroundColor('100%')
+        // 中心数值文字设置
+        .centerTextValue(62)
+        .centerTextValueColor('#4ad538')
+        // 中心箭头线设置
+        // 中心文本文字设置
+        .centerTextTitle('优')
+        .centerTextTitleColor('#ff4504')
+        // 内轨轨道设置
+        .orbitColorIn('#ccc')
+        .scaleColor('#4b6692')
+
+    d3.select('.d3-dashboard').call(dashboard);
+</script>
+</body>
+
+</html>

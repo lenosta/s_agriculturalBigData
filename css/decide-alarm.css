@@ -1,0 +1,71 @@
+/*决策预警页面样式*/
+.default-line {
+    display: inline-block;
+    cursor: pointer;
+}
+.default-line i, .goodindustry {
+    color: #F8BB01;
+}
+
+.goodindustry-ct {
+    color: #cbced4;
+}
+.goodindustry-ct > li {
+    border-bottom: 1px solid  #014f73;
+}
+.goodindustry-ct h4 {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 2.6;
+}
+.goodindustry-ct li > div, .goodindustry-ct li > div > div {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 3.8;
+}
+.goodindustry-ct li > div > div {
+    margin-right: 50px;
+}
+.goodindustry-ct li > div > div:last-child {
+    margin-right: 0;
+}
+.goodindustry-ct li > div > div span:nth-child(1) {
+    color: #6ea1c6;
+}
+.decide-alarm-1 .moduleCont, .decide-alarm-2 .moduleCont {
+    height: 600px;
+}
+.decide-alarm-1 .innerTab, .decide-alarm-2 .innerTab {
+    height: 100%;
+}
+.decide-alarm-2 .innerTab {
+    position: relative;
+}
+.decide-alarm-2 .goodindustry-ct {
+    height: 96%;
+    overflow: auto!important;
+}
+
+/*分页样式*/
+.page {
+    position: absolute;
+}
+.decide-alarm-2 .page {
+    bottom: 10px;
+    right: 10px;
+}
+.page > li {
+    display: inline-block;
+    vertical-align: middle;
+}
+.page > li a {
+    display: inline-block;
+    border-radius: .1em;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background: #063781;
+    font-size: 12px;
+    color: #97d7ff;
+}

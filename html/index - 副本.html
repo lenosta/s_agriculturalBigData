@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>农业监测预警大数据平台</title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <script type="text/javascript" src="../js/d3.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="../js/bubble-cloud.js"></script>
+    <script src="../layui/lay/dest/layui.all.js"></script>
+</head>
+<body>
+ 
+<div class="header">
+    <h1><a href="###" class="logo"><img src="../images/headLogo.png"> </a></h1>
+    <div class="headerR">
+        <div class="headerR_r">
+            <a href="#">返回导航页</a>
+        </div>
+        <ul class="headerR_l">
+            <li class="headerR_lTime">
+                <p>2016/11/11 星期五</p>
+                <p class="headerR_lTimeDay"><span>七天预报</span></p>
+            </li>
+            <li>
+                <p>晴</p>
+                <p><i class="iconfont icon-zhaoshenbian02"></i></p>
+            </li>
+            <li>
+                <p>4-7</p>
+                <p>℃</p>
+            </li>
+            <li>
+                <p>94</p>
+                <p>AQI</p>
+            </li>
+            <li>
+                <p>61</p>
+                <p><i class="iconfont icon-shape6"></i></p>
+            </li>
+            <li>
+                <p>2级</p>
+                <p><i class="iconfont icon-changhongchuifeng"></i></p>
+            </li>
+        </ul>
+    </div>
+</div>
+ <div class="leftBar">
+    <ul>
+        <li style="padding-top: 5px;" class="active">
+            <i class="iconfont icon-zhuye"></i>
+            <p>监测预警一张图</p>
+        </li>
+        <li>
+            <i class="iconfont icon-anquan"></i>
+            <p>农产品质量安全</p>
+        </li>
+        <li>
+            <i class="iconfont icon-jiage"></i>
+            <p>产品价格</p>
+        </li>
+        <li>
+            <i class="iconfont icon-fuzaijunheng"></i>
+            <p>产品供需平衡</p>
+        </li>
+        <li>
+            <i class="iconfont icon-qixiangchaxun"></i>
+            <p>农业气象</p>
+        </li>
+        <li>
+            <i class="iconfont icon-piaochong"></i>
+            <p>农业病虫害</p>
+        </li>
+        <li>
+            <i class="iconfont icon-gangcaiyunfeibutie"></i>
+            <p>农业补贴</p>
+        </li>
+        <li>
+            <i class="iconfont icon-14"></i>
+            <p>网络舆情</p>
+        </li>
+    </ul>
+</div>
+
+<div class="content">
+
+    <div class="inSel">
+        时间：
+        <div class="simSel">2016-11-11<i></i></div>
+        地区：
+        <div><i></i></div>
+    </div>
+
+    <div class="module module1">
+        <div class="moduleTit">供求走势预测</div>
+        <div class="moduleCont">as<br>as<br>as<br>as<br></div>
+    </div>
+
+    <div class="module module2">
+        <div class="moduleTit">气象灾害预警</div>
+        <div class="moduleCont">
+            <div class="module2Cont">
+                <dl>
+                    <dt><i class="iconfont icon-changhongchuifeng vm"></i>大风预警</dt>
+                    <dd>解除暴雪蓝色预警</dd>
+                </dl>
+                <dl>
+                    <dt><i class="iconfont icon-wu vm"></i>霾预警</dt>
+                    <dd>继续发布霾黄色预警</dd>
+                </dl>
+                <dl>
+                    <dt><i class="iconfont icon-xue vm"></i>暴雪预警</dt>
+                    <dd>解除寒潮蓝色预警</dd>
+                </dl>
+                <dl>
+                    <dt><i class="iconfont icon-hanchaoyujing vm"></i>寒潮预警</dt>
+                    <dd>解除大雾橙色预警</dd>
+                </dl>
+                <dl>
+                    <dt><i class="iconfont icon-wu1 vm"></i>大雾预警</dt>
+                    <dd>解除大雾橙色预警</dd>
+                </dl>
+                <dl>
+                    <dt><i class="iconfont icon-taifengyujing vm"></i>台风预警</dt>
+                    <dd>解除大雾橙色预警</dd>
+                </dl>
+                <dl>
+                    <dt><i class="iconfont icon-baoyu vm"></i>暴雨预警</dt>
+                    <dd>解除大雾橙色预警</dd>
+                </dl>
+                <dl>
+                    <dt><i class="iconfont icon-huozaizidongbaojing vm"></i>火灾预警</dt>
+                    <dd>解除火灾预警</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="module module3">
+        <div class="moduleTit">
+            农业舆情热词
+            <div class="moduleTitMore">蔬菜<i></i></div>
+    </div>
+        <div class="moduleCont">as<br>as<br>as<br>as<br></div>
+    </div>
+
+    <div class="module module4">
+        <div class="moduleTit">价格涨跌预警</div>
+        <div class="moduleCont">
+            <div id="bubbleCloud" class="module4Cont"></div>
+        </div>
+    </div>
+
+    <div class="module module5">
+        <div class="moduleTit">
+            成交量及价格指数走势
+            <div class="moduleTitMore">蔬菜<i></i></div>
+        </div>
+        <div class="moduleCont">as<br>as<br>as<br>as<br></div>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        var mockData = [{
+            "name": "羊肉",
+            "size": 1
+        },{
+            "name": "猪肉",
+            "size": 2
+        },{
+            "name": "冬瓜",
+            "size": 3
+        },{
+            "name": "白萝卜",
+            "size": 4
+        },{
+            "name": "牛肉",
+            "size": 5
+        },{
+            "name": "西红柿",
+            "size": 6
+        },{
+            "name": "菠菜",
+            "size": 7
+        }];
+        var chart = new BubbleCloudChart(document.getElementById("bubbleCloud"), {
+            colors: ['#319df0', '#fb6537', '#34c884', '#fc8560', '#b2ead1', '#b2ead1', '#fdc1af', '#fef0d8'],
+            labelFunction: function(item) {
+                return [item.name];
+            }
+        });
+        chart.clickHandler = function(d) {
+            //console.log(d.name, d.size, d.group);
+        };
+        chart.init();
+        chart.setData(mockData);
+        window.addEventListener('resize', function(argument) {
+            chart.resize();
+        });
+    </script>
+</body>
+</html>

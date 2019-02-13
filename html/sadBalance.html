@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>农业监测预警大数据平台</title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/warning.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.css">
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script src="../layui/lay/dest/layui.all.js"></script>
+   
+</head>
+<body>
+<div class="header">
+    <h1><a href="###" class="logo"><img id="headerImg" src="../images/headLogo.png"></a></h1>
+    <div class="headerR">
+        <div class="headerR_r">
+            <a href="navigation.html">返回导航页</a>
+        </div>
+        <!--<ul class="headerR_l">
+            <li class="headerR_lTime">
+                <p>2016/11/11 星期五</p>
+                <p class="headerR_lTimeDay"><span>七天预报</span></p>
+            </li>
+            <li>
+                <p>晴</p>
+                <p><i class="iconfont icon-zhaoshenbian02"></i></p>
+            </li>
+            <li>
+                <p>4-7</p>
+                <p>℃</p>
+            </li>
+            <li>
+                <p>94</p>
+                <p>AQI</p>
+            </li>
+            <li>
+                <p>61</p>
+                <p><i class="iconfont icon-shape6"></i></p>
+            </li>
+            <li>
+                <p>2级</p>
+                <p><i class="iconfont icon-changhongchuifeng"></i></p>
+            </li>
+        </ul>-->
+    </div>
+</div>
+
+<div class="leftBar" style="position: absolute;">
+    <ul>
+        <li style="padding-top: 5px;" onclick="argiObj.link('index.html')">
+            <i class="iconfont icon-zhuye"></i>
+            <p>监测预警一张图</p>
+        </li>
+        <li onclick="argiObj.link('quality.html')">
+            <i class="iconfont icon-anquan"></i>
+            <p>农产品质量安全</p>
+        </li>
+        <li onclick="argiObj.link('price.html')">
+            <i class="iconfont icon-jiage"></i>
+            <p>农产品价格</p>
+        </li>
+        <li onclick="argiObj.link('sadBalance.html')">
+            <i class="iconfont icon-fuzaijunheng"></i>
+            <p>农产品供需平衡</p>
+        </li>
+        <li onclick="argiObj.link('meteorological.html')">
+            <i class="iconfont icon-qixiangchaxun"></i>
+            <p>农业气象</p>
+        </li>
+        <!-- <li>
+            <i class="iconfont icon-piaochong"></i>
+            <p>农业病虫害</p>
+        </li>
+        <li>
+            <i class="iconfont icon-gangcaiyunfeibutie"></i>
+            <p>农业补贴</p>
+        </li>
+        <li onclick="window.open('http://nongye.9cfcf.com/jsp/login_new.jsp')">
+            <i class="iconfont icon-14"></i>
+            <p>网络舆情</p>
+        </li> -->
+    </ul>
+</div>
+<script>
+    $(function(){
+        var localUrl = window.location + '';
+        var spIndex;
+        if (localUrl.indexOf('/index.html') >= 0) { //监测预警一张图
+            spIndex = 0;
+        } else if (localUrl.indexOf('/quality.html') >= 0) { //农产品质量安全
+            spIndex = 1;
+        } else if (localUrl.indexOf('/price.html') >= 0) { //产品价格
+            spIndex = 2;
+        } else if (localUrl.indexOf('/sadBalance.html') >= 0) { //产品供需平衡
+            spIndex = 3;
+        } else if (localUrl.indexOf('/meteorological.html') >= 0) { //农业气象
+            spIndex = 4;
+        }
+        $(".leftBar ul li").eq(spIndex).addClass("active").siblings().removeClass("active");
+    })
+</script>
+
+<div class="content">
+    <div class="contMap">
+        <div id="map" class="contMapNr"></div>
+        <div class="visualMap_2" style="bottom:40px;">
+            <p>产量（万吨）</p>
+            <dl>
+                <dt>0</dt>
+                <dd></dd>
+                <dt>600</dt>
+            </dl>
+        </div>
+    </div>
+
+    <div class="introductionText">
+        全国蔬菜种植面积：<span class="orange"><strong>2500</strong>万公顷</span>
+        产量：<span class="orange"><strong>7.6</strong>亿吨</span>
+    </div>
+
+    <div class="contTit1">主产区分布</div>
+
+    <div class="inSel1">
+        时间：
+        <div class="simSel simSelTime"><input id="DatePicker1" onclick="WdatePicker({el:'DatePicker1',highLineWeekDay:false,onpicking:startpick,dateFmt:'yyyy-MM-dd',qsEnabled:false,autoShowQS:false,isShowClear:false,isShowToday:false})" type="text" class="p_myDatePicker" value="2016-12-13" readonly/><i></i></div>
+        地区：
+        <div class="simSel mr20">
+            <span>全国</span><i></i>
+            <ul class="simSelHide">
+                <li class="mapChina">全国</li>
+                <li class="mapShandong">山东</li>
+            </ul>
+        </div>
+        品种：
+        <div class="simSel">
+            <span>蔬菜</span><i></i>
+            <ul class="simSelHide">
+                <li onclick="tablist(this.innerText)">蔬菜</li>
+                <li onclick="tablist(this.innerText)">粮油</li>
+                <li onclick="tablist(this.innerText)">禽畜</li>
+            </ul>
+        </div>
+        <div class="simSel">
+            <span id="secondTitle">全部</span><i></i>
+            <ul class="simSelHide" id="secondMenu">
+                 <li>全部</li>      
+            </ul>
+        </div>
+    </div>
+
+    <div class="module sadmodule1">
+        <ul class="sadmodule1Bq">
+            <li class="sadmodule1Cl active"><i></i>产量</li>
+            <li class="sadmodule1Xf"><i></i>消费</li>
+            <li class="sadmodule1Kc"><i></i>库存</li>
+        </ul>
+        <div class="moduleTit">供需结构按区域分布</div>
+        <div class="moduleCont">
+            <div id="sadmodule1Cont" class="sadmodule1Cont"></div>
+        </div>
+    </div>
+
+    
+
+    <div class="module sadmodule2">
+        <div class="moduleTit">供需平衡表</div>
+        <div class="moduleCont">
+            <div class="sadmodule2Cont selList">
+                <table cellpadding="0" cellspacing="0" class="sadmodule2ContTb" style="text-align: center;">
+                    <tr>
+                        <th style="text-align: center;">单位(万吨)</th>
+                        <th style="text-align: center;">2015年</th>
+                        <th style="text-align: center;">2016年</th>
+                        <th style="text-align: center;">2017年</th>
+                    </tr>
+                    <tr>
+                        <td>期初库存</td><td>1053</td><td>1420</td><td>1631</td>
+                    </tr>
+                    <tr>
+                        <td>生产量</td><td>77927</td><td>78308</td><td>78543</td>
+                    </tr>
+                    <tr>
+                        <td>自损</td><td>27221</td><td>27071</td><td>27157</td>
+                    </tr>
+                    <tr>
+                        <td>商品产量</td><td>51322</td><td>51709</td><td>51729</td>
+                    </tr>
+                    <tr>
+                        <td>进口量</td><td>35</td><td>39</td><td>43</td>
+                    </tr>
+                    <tr>
+                        <td>总供应</td><td>52410</td><td>53168</td><td>53403</td>
+                    </tr>
+                    <tr>
+                        <td>出口量</td><td>1103</td><td>1125</td><td>1147</td>
+                    </tr>
+                    <tr>
+                        <td>国内消费</td><td>49887</td><td>50412</td><td>50883</td>
+                    </tr>
+                    <tr>
+                        <td>总消费</td><td>50990</td><td>51537</td><td>52030</td>
+                    </tr>
+                     <tr>
+                        <td>期末库存</td><td>1420</td><td>1631</td><td>1373</td>
+                    </tr>
+                    <tr>
+                        <td>库存消费比</td><td>2.78%</td><td>3.16%</td><td>2.64%</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="module sadmodule3">
+        <div class="moduleTit">库存预警指数</div>
+        <div class="moduleCont">
+            <div id="sadmodule3Cont" class="sadmodule3Cont"></div>
+        </div>
+    </div>
+
+    <div class="module sadmodule4">
+        <div class="moduleTit">生产销售预警指数</div>
+        <div class="moduleCont">
+            <div id="sadmodule4Cont" class="sadmodule4Cont"></div>
+        </div>
+    </div>
+
+    <div class="module sadmodule5">
+        <div class="moduleTit">供应过剩/短缺预警</div>
+        <div class="moduleCont">
+            <div id="sadmodule5Cont" class="sadmodule5Cont"></div>
+        </div>
+    </div>
+
+</div>
+
+<script src="../js/WdatePicker.js"></script>
+<script src="../js/echarts-all-3.js"></script>
+<script src="../js/echarts-engine.js"></script>
+<script src="../js/d3.v4.min.js"></script>
+<script src="../js/commonLibMap.min.js"></script>
+<script src="../js/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript" src="../js/sadBalance-data.js"></script>
+
+<script>
+$(function(){
+   /* var winH = $(window).height();
+    if(winH <= 760){
+        $(".contMap").height(480);
+    }else{
+        $(".contMap").height(winH - 280);
+    }*/
+    mapChina();
+
+    var sadmodule1Cont=charts.init({id:831,container:"sadmodule1Cont",option:{
+         series : [{
+                data:[
+                    {
+                        value:9973.7,
+                        name:'山东'
+                    },
+                    {
+                        value:8125.7,
+                        name:'河北'
+                    },
+                    {
+                        value:7272.5,
+                        name:'河南'
+                    },
+                    {
+                        value:5417,
+                        name:'江苏'
+                    },
+                     {
+                        value:4069.3,
+                        name:'四川'
+                    },
+                    {
+                        value:3763.5,
+                        name:'湖南'
+                    },
+                    {
+                        value:3671.5,
+                        name:'湖北'
+                    },
+                    {
+                        value:33712.3,
+                        name:'其它'
+                    }
+                ]
+            }]
+
+    }});
+    $(".sadmodule1Cl").click(function(){
+        $(this).addClass("active").siblings("li").removeClass("active");
+        var sadmodule1Cont=charts.init({id:831,container:"sadmodule1Cont",option:{
+          series : [{
+                data:[
+                    {
+                        value:9973.7,
+                        name:'山东'
+                    },
+                    {
+                        value:8125.7,
+                        name:'河北'
+                    },
+                    {
+                        value:7272.5,
+                        name:'河南'
+                    },
+                    {
+                        value:5417,
+                        name:'江苏'
+                    },
+                     {
+                        value:4069.3,
+                        name:'四川'
+                    },
+                    {
+                        value:3763.5,
+                        name:'湖南'
+                    },
+                    {
+                        value:3671.5,
+                        name:'湖北'
+                    },
+                    {
+                        value:33712.3,
+                        name:'其它'
+                    }
+                ]
+            }]
+
+    }});
+    })
+    $(".sadmodule1Xf").click(function(){
+        $(this).addClass("active").siblings("li").removeClass("active");
+        var sadmodule1Cont=charts.init({id:831,container:"sadmodule1Cont",option:{
+             series : [{
+                 name:'消费',
+                data:[
+                    {
+                        value:3641.5,
+                        name:'山东'
+                    },
+                    {
+                        value:2746.8,
+                        name:'河北'
+                    },
+                    {
+                        value:3510.1,
+                        name:'河南'
+                    },
+                    {
+                        value:2961.1,
+                        name:'江苏'
+                    },
+                     {
+                        value:3028,
+                        name:'四川'
+                    },
+                    {
+                        value:2506.2,
+                        name:'湖南'
+                    },
+                    {
+                        value:3989.3,
+                        name:'广东'
+                    },
+                    {
+                        value:28499.7,
+                        name:'其它'
+                    }
+                ]
+            }]
+
+        }});
+    })
+    $(".sadmodule1Kc").click(function(){
+        $(this).addClass("active").siblings("li").removeClass("active");
+        var sadmodule1Cont=charts.init({id:831,container:"sadmodule1Cont",option:{
+            series : [{
+                name:'库存',
+                data:[
+                    {
+                        value:310,
+                        name:'山东'
+                    },
+                    {
+                        value:233.9,
+                        name:'河北'
+                    },
+                    {
+                        value:298.9,
+                        name:'河南'
+                    },
+                    {
+                        value:252.1,
+                        name:'江苏'
+                    },
+                     {
+                        value:257.8,
+                        name:'四川'
+                    },
+                    {
+                        value:213.4,
+                        name:'湖南'
+                    },
+                    {
+                        value:339.7,
+                        name:'广东'
+                    },
+                    {
+                        value:2426.5,
+                        name:'其它'
+                    }
+                ]
+            }]
+        }});
+    })
+
+    var sadmodule3Cont = charts.init({id:837,container:"sadmodule3Cont",option:{
+            series: [
+                {                    
+                    data: [35,50,65,60,105,135,160, 145,155,100,50,45]
+                }
+            ]
+    }});
+    var sadmodule4Cont = charts.init({id:838,container:"sadmodule4Cont",option:{
+        series: [
+                {                    
+                    data: [-0.15,0,0.15,0.1,0.55,0.85,1.1, 0.95,1.05,0.5,0,-0.05]
+                }
+            ]
+    }});
+    var sadmodule5Cont = charts.init({id:839,container:"sadmodule5Cont",option:{
+        series: [
+            {
+                
+                data:[1534,1299,1435,1297,846]
+            }
+        ]
+    }});
+
+});
+function mapChina(){
+   
+    var mapColor = ['#00edff','#00c9ff','#009bff','#0072eb','#003a78']
+    var mapmj = {
+        '济南市':43.2467,
+        '青岛市':49.306,
+        '淄博市':22.0307,
+        '枣庄市':26.0213,
+        '东营市':16.0597,
+        '烟台市':32.1167,
+        '潍坊市':72.3373,
+        '济宁市':64.5753,
+        '泰安市':37.4297,
+        '威海市':13.2867,
+        '日照市':15.5967,
+        '莱芜市':4.3267,
+        '临沂市':66.8067,
+        '德州市':86.266,
+        '聊城市':74.3333,
+        '滨州市':45.3433,
+        '菏泽市':97.4667
+    };
+    var mapcl = {
+        '济南市':264.5545,
+        '青岛市':321.4,
+        '淄博市':146,
+        '枣庄市':168,
+        '东营市':99.837,
+        '烟台市':193.4515,
+        '潍坊市':456,
+        '济宁市':455.3,
+        '泰安市':276.8061,
+        '威海市':81.2607,
+        '日照市':93.2186,
+        '莱芜市':25.95,
+        '临沂市':427.75,
+        '德州市':648.65,
+        '聊城市':504.95,
+        '滨州市':310.35,
+        '菏泽市':620.75
+    };
+    var data = {};
+    var areaFlag = '';
+
+    function clickHandle(event, data, cmap) {
+        if (data._type == 'area') {
+            var level = cmap.option.level + 1;
+            showMap(data.properties.name, level);
+        } else if(data._type == 'point'){
+            if(data.sf == '山东'){
+                showMap(data.sf, 2);
+            }
+        }
+
+    }
+
+    function mouseOverHandle(event, data) {
+        //console.log(data.properties.name)
+        if (data._type == 'area') {
+            if(areaFlag){
+                var $tip = $('#map_tooltip');
+                if (!$tip.length) {
+                    $tip = $('<div id="map_tooltip">');
+                    $('#map').append($tip);
+                }
+                d3.select("#map_tooltip").transition().duration(200).style("opacity", 0.9);
+                d3.select("#map_tooltip").html(tooltipHtml(data.properties.name))
+                    .style("left", (d3.event.pageX - 400) + "px")
+                    .style("top", (d3.event.pageY - 130) + "px");
+            }
+        }
+    }
+
+    function mouseOutHandle(event, data) {
+        if (!$(event.toElement).is('#map_popOver')) {
+            $('#map_popOver').css({
+                display: 'none'
+            });
+        }
+        if (!$(event.toElement).is('#map_tooltip')) {
+            d3.select("#map_tooltip").transition().duration(500).style("opacity", 0);
+        }
+        if (!$(event.toElement).is('#bar_tooltip')) {
+            $('#bar_tooltip').stop().fadeOut();
+        }
+    }
+
+    function tooltipHtml(n) {
+        return "<h4>" + n + "</h4><table>" +
+            '<div class="tl cfff">占地面积(万公顷)：<br><span class="pbiaoqian2">' + mapmj[n] + '</span></div>'+
+            '<div class="tl cfff margin-top-10">产量(万吨)：<br><span class="pbiaoqian3">' + mapcl[n] + '</span></div>'
+    }
+
+    commonLib.CMap.config.baseDir = '../geoJson/';
+
+    function showMap(name, level) {
+        if(name === '山东'&& level == 2){
+            areaFlag = true;
+            var map = new commonLib.CMap({
+                dom: document.getElementById('map'),
+                data: data,
+                mouseOutHandle: mouseOutHandle,
+                mouseOverHandle: mouseOverHandle,
+                clickHandle: level <= 2 ? clickHandle : null,
+                name: name,
+                areaColor: function(d) {
+                    var i = Math.round(Math.random()*4);
+                    return mapColor[i]
+                },
+                level: level == undefined ? 1 : level
+            });
+        }else {
+            var map = new commonLib.CMap({
+                dom: document.getElementById('map'),
+                data: data,
+                mouseOutHandle: mouseOutHandle,
+                mouseOverHandle: mouseOverHandle,
+                clickHandle: level <= 2 ? clickHandle : null,
+                name: name,
+                level: level == undefined ? 1 : level
+            });
+            areaFlag = false;
+        }
+        return map;
+    }
+
+    var cmap = showMap('china', 1);
+}
+function mapShandong(){
+
+    var mapColor = ['#00edff','#00c9ff','#009bff','#0072eb','#003a78']
+    var mapmj = {
+        '济南市':43.2467,
+        '青岛市':49.306,
+        '淄博市':22.0307,
+        '枣庄市':26.0213,
+        '东营市':16.0597,
+        '烟台市':32.1167,
+        '潍坊市':72.3373,
+        '济宁市':64.5753,
+        '泰安市':37.4297,
+        '威海市':13.2867,
+        '日照市':15.5967,
+        '莱芜市':4.3267,
+        '临沂市':66.8067,
+        '德州市':86.266,
+        '聊城市':74.3333,
+        '滨州市':45.3433,
+        '菏泽市':97.4667
+    };
+    var mapcl = {
+        '济南市':264.5545,
+        '青岛市':321.4,
+        '淄博市':146,
+        '枣庄市':168,
+        '东营市':99.837,
+        '烟台市':193.4515,
+        '潍坊市':456,
+        '济宁市':455.3,
+        '泰安市':276.8061,
+        '威海市':81.2607,
+        '日照市':93.2186,
+        '莱芜市':25.95,
+        '临沂市':427.75,
+        '德州市':648.65,
+        '聊城市':504.95,
+        '滨州市':310.35,
+        '菏泽市':620.75
+    };
+    var data = {};
+    var areaFlag = '';
+
+    function clickHandle(event, data, cmap) {
+        if (data._type == 'area') {
+            var level = cmap.option.level + 1;
+            showMap(data.properties.name, level);
+        } else if(data._type == 'point'){
+            if(data.sf == '山东'){
+                showMap(data.sf, 2);
+            }
+        }
+
+    }
+
+    function mouseOverHandle(event, data) {
+        //console.log(data.properties.name)
+        if (data._type == 'area') {
+            if(areaFlag){
+                var $tip = $('#map_tooltip');
+                if (!$tip.length) {
+                    $tip = $('<div id="map_tooltip">');
+                    $('#map').append($tip);
+                }
+                d3.select("#map_tooltip").transition().duration(200).style("opacity", 0.9);
+                d3.select("#map_tooltip").html(tooltipHtml(data.properties.name))
+                    .style("left", (d3.event.pageX - 400) + "px")
+                    .style("top", (d3.event.pageY - 130) + "px");
+            }
+        }
+    }
+
+    function mouseOutHandle(event, data) {
+        if (!$(event.toElement).is('#map_popOver')) {
+            $('#map_popOver').css({
+                display: 'none'
+            });
+        }
+        if (!$(event.toElement).is('#map_tooltip')) {
+            d3.select("#map_tooltip").transition().duration(500).style("opacity", 0);
+        }
+        if (!$(event.toElement).is('#bar_tooltip')) {
+            $('#bar_tooltip').stop().fadeOut();
+        }
+    }
+
+    function tooltipHtml(n) {
+        return "<h4>" + n + "</h4><table>" +
+            '<div class="tl cfff">占地面积(万公顷)：<br><span class="pbiaoqian2">' + mapmj[n] + '</span></div>'+
+            '<div class="tl cfff margin-top-10">产量(万吨)：<br><span class="pbiaoqian3">' + mapcl[n] + '</span></div>'
+    }
+
+    commonLib.CMap.config.baseDir = '../geoJson/';
+
+    function showMap(name, level) {
+        if(name === '山东'&& level == 2){
+            areaFlag = true;
+            var map = new commonLib.CMap({
+                dom: document.getElementById('map'),
+                data: data,
+                mouseOutHandle: mouseOutHandle,
+                mouseOverHandle: mouseOverHandle,
+                clickHandle: level <= 2 ? clickHandle : null,
+                name: name,
+                areaColor: function(d) {
+                    var i = Math.round(Math.random()*4);
+                    return mapColor[i]
+                },
+                level: level == undefined ? 1 : level
+            });
+        }else {
+            var map = new commonLib.CMap({
+                dom: document.getElementById('map'),
+                data: data,
+                mouseOutHandle: mouseOutHandle,
+                mouseOverHandle: mouseOverHandle,
+                clickHandle: level <= 2 ? clickHandle : null,
+                name: name,
+                level: level == undefined ? 1 : level
+            });
+            areaFlag = false;
+        }
+        return map;
+    }
+
+    var cmap = showMap('山东', 2);
+}
+$('.mapChina').on('click', function() {
+    mapChina();
+    changeData();
+});
+$('.mapShandong').on('click', function() {
+    mapShandong();
+    changeData();
+});
+</script>
+</body>
+</html>

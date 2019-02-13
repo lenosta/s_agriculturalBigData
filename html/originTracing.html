@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" id="orginTracing">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>农业监测预警大数据平台</title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/jsmind.css">
+    <link rel="stylesheet" type="text/css" href="../css/fyw.css">
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script src="../js/WdatePicker.js"></script>
+</head>
+<body>
+<div class="header">
+    <h1><a href="###" class="logo"><img id="headerImg" src="../images/header-zs.png"></a></h1>
+    <div class="headerR">
+        <div class="headerR_r">
+            <a href="navigation.html">返回导航页</a>
+        </div>
+        <ul class="headerR_l">
+            <li class="headerR_lTime">
+                <p>2016/11/11 星期五</p>
+                <p class="headerR_lTimeDay"><span>七天预报</span></p>
+            </li>
+            <li>
+                <p>晴</p>
+                <p><i class="iconfont icon-zhaoshenbian02"></i></p>
+            </li>
+            <li>
+                <p>4-7</p>
+                <p>℃</p>
+            </li>
+            <li>
+                <p>94</p>
+                <p>AQI</p>
+            </li>
+            <li>
+                <p>61</p>
+                <p><i class="iconfont icon-shape6"></i></p>
+            </li>
+            <li>
+                <p>2级</p>
+                <p><i class="iconfont icon-changhongchuifeng"></i></p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="leftBar">
+    <ul>
+        <li style="padding-top: 5px;" onclick="javascript:location.href='industryChainTracing.html'">
+            <i class="iconfont icon-zhuye"></i>
+            <p>追溯预警一张图</p>
+        </li>
+        <li onclick="javascript:location.href='originTracing.html'">
+            <i class="iconfont icon-dizhi"></i>
+            <p>产地追溯</p>
+        </li>
+        <li onclick="javascript:location.href='circulationTracing.html'">
+            <i class="iconfont icon-liutong"></i>
+            <p>流通追溯</p>
+        </li>
+        <li onclick="javascript:location.href='areaTracing.html'">
+            <i class="iconfont icon-xiaoshou"></i>
+            <p>销地追溯</p>
+        </li>
+        <li onclick="javascript:location.href='detectionTracing.html'">
+            <i class="iconfont icon-iconset0398"></i>
+            <p>检测追溯</p>
+        </li>
+
+    </ul>
+</div>
+
+<div class="content">
+    <div class="pageTit">
+        <h3>产地追溯预警</h3>
+        <p>从产地种植结构<i class="iconfont icon-jiantou"></i>面源污染区域<i class="iconfont icon-jiantou"></i>受污染影响种植区域<i class="iconfont icon-jiantou"></i>受污染影响种植户和品种<i class="iconfont icon-jiantou"></i>受污染影响品种流向</p>
+    </div>
+    <div class="contTit">五莲县农产品种植结构及面源污染</div>
+
+    <div class="inSel">
+        地区：
+        <div class="simSel margin-right-20">
+            <span id="typeval">五莲县</span><i></i>
+            <ul class="simSelHide" style="z-index: 10000">
+                <li onclick="selectArea(this.innerHTML)">五莲县</li>
+                <li onclick="selectArea(this.innerHTML)">苍山县</li>
+                <li onclick="selectArea(this.innerHTML)">寿光县</li>
+            </ul>
+        </div>
+        时间：
+        <div class="simSel simSelTime simSelTime1"><input id="DatePicker1"
+                                                          onclick="WdatePicker({el:'DatePicker1',highLineWeekDay:false,onpicking:selectTime,dateFmt:'yyyy-MM',qsEnabled:false,autoShowQS:false,isShowClear:false,isShowToday:false})"
+                                              type="text" class="p_myDatePicker" value="2016-11"/>
+            <i></i>
+        </div>
+
+    </div>
+
+    <ul class="visualMap border-bottom-0b2b6e padding-bottom-14">
+        <li class="visualMap1"><p>化工污染企业</p></li>
+        <li class="visualMap2"><p>城市垃圾点</p></li>
+        <li class="visualMap3"><p>城市污水区</p></li>
+        <li class="visualMap4"><p>受污染农田区域</p></li>
+    </ul>
+
+    <ul class="visualMap svisualMap">
+        <li class="visualMap5"><p>花生<span>100万亩</span></p></li>
+        <li class="visualMap6"><p>蔬菜<span>234万亩</span></p></li>
+        <li class="visualMap7"><p>大蒜<span>384万亩</span></p></li>
+        <li class="visualMap8"><p>玉米<span>23万亩</span></p></li>
+        <li class="visualMap9"><p>小麦<span>75万亩</span></p></li>
+        <li class="visualMap10"><p>地瓜<span>73万亩</span></p></li>
+    </ul>
+    <div class="module module5" id="map">
+        <div class="clickbox1" onclick="clickbox1()"></div>
+        <div class="clickbox2" onclick="clickbox2()"></div>
+        <img src="../images/chandizhuisu1.png">
+    </div>
+
+    <div class="module module6">
+        <div class="moduleTit">
+            污染区域预警种植户和品种
+
+        </div>
+        <div class="moduleCont">
+            <table id="listContent1">
+                <tr>
+                    <th>种植户</th>
+                    <th>影响品种</th>
+                    <th class="noborderright">影响种植面积</th>
+                </tr>
+                <tr onclick="openbox('白菜')">
+                    <td>某生产基地</td>
+                    <td style="color: yellow;">白菜</td>
+                    <td class="noborderright">20亩</td>
+                </tr>
+                <tr onclick="openbox('黄瓜')">
+                    <td>某农场</td>
+                    <td style="color: yellow;">黄瓜</td>
+                    <td class="noborderright">10亩</td>
+                </tr>
+                <tr>
+                    <td>某农户</td>
+                    <td>花生</td>
+                    <td class="noborderright">2.4亩</td>
+                </tr>
+                <tr onclick="openbox()">
+                    <td>某生产基地</td>
+                    <td>菜豆</td>
+                    <td class="noborderright">12亩</td>
+                </tr>
+                <tr>
+                    <td>某农户</td>
+                    <td>黄瓜</td>
+                    <td class="noborderright">2亩</td>
+                </tr>
+                <tr>
+                    <td>某生产基地</td>
+                    <td>玉米</td>
+                    <td class="noborderright">2亩</td>
+                </tr>
+                <tr>
+                <td onclick="openbox()">某农户</td>
+                <td>黄瓜</td>
+                <td class="noborderright">1亩</td>
+            </tr>
+                <tr>
+                <td>某生产基地</td>
+                <td>小麦</td>
+                <td class="noborderright">20亩</td>
+            </tr>
+
+
+            </table>
+
+            <table style="display: none;" id="listContent2" >
+                <tr>
+                    <th>种植户</th>
+                    <th>影响品种</th>
+                    <th class="noborderright">影响种植面积</th>
+                </tr>
+                <tr onclick="openbox('白菜')">
+                    <td>某农户</td>
+                    <td style="color: yellow;">白菜</td>
+                    <td class="noborderright">3亩</td>
+                </tr>
+                <tr onclick="openbox('黄瓜')">
+                    <td>某农户</td>
+                    <td style="color: yellow;">黄瓜</td>
+                    <td class="noborderright">4亩</td>
+                </tr>
+                <tr>
+                    <td>某农户</td>
+                    <td>黄瓜</td>
+                    <td class="noborderright">2亩</td>
+                </tr>
+                <tr onclick="openbox()">
+                    <td>某农户</td>
+                    <td>小麦</td>
+                    <td class="noborderright">2.5亩</td>
+                </tr>
+                <tr>
+                    <td>某农户</td>
+                    <td>玉米</td>
+                    <td class="noborderright">2亩</td>
+                </tr>
+                <tr>
+                    <td>某生产基地</td>
+                    <td>白菜</td>
+                    <td class="noborderright">20亩</td>
+                </tr>
+                <tr>
+                    <td onclick="openbox()">某农户</td>
+                    <td>菜豆</td>
+                    <td class="noborderright">2亩</td>
+                </tr>
+                <tr>
+                    <td>某生产基地</td>
+                    <td>黄瓜</td>
+                    <td class="noborderright">2亩</td>
+                </tr>
+                <tr>
+                    <td>某生产基地</td>
+                    <td>小麦</td>
+                    <td class="noborderright">22亩</td>
+                </tr>
+                <tr>
+                    <td>某生产基地</td>
+                    <td>大蒜</td>
+                    <td class="noborderright">2亩</td>
+                </tr>
+                <tr>
+                    <td>某生产基地</td>
+                    <td>甘蓝</td>
+                    <td class="noborderright">4亩</td>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+
+    <div class="module module7" id="showmoudle">
+        <div class="moduleTit">
+            面源污染影响品种流向预警
+        </div>
+        <div class="moduleCont" id="jsmind_container">
+            <img src="../images/dahuanggua_03.png" alt="">
+        </div>
+    </div>
+</div>
+<script src="../js/originTracing.js"></script>
+</body>
+</html>

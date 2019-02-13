@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>农业监测预警大数据平台</title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/credit-evaluation.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.css">
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script src="../js/WdatePicker.js"></script>
+    <script src="../js/echarts-all-3.js"></script>
+    <script src="../js/echarts-engine.js"></script>
+</head>
+
+<body>
+    <div class="header">
+    <h1><a href="###" class="logo"><img id="headerImg" src="../images/header-xy.png"></a></h1>
+    <div class="headerR">
+        <div class="headerR_r">
+            <a href="navigation.html">返回导航页</a>
+        </div>
+        <!-- <ul class="headerR_l">
+            <li class="headerR_lTime">
+                <p>2016/11/11 星期五</p>
+                <p class="headerR_lTimeDay"><span>七天预报</span></p>
+            </li>
+            <li>
+                <p>晴</p>
+                <p><i class="iconfont icon-zhaoshenbian02"></i></p>
+            </li>
+            <li>
+                <p>4-7</p>
+                <p>℃</p>
+            </li>
+            <li>
+                <p>94</p>
+                <p>AQI</p>
+            </li>
+            <li>
+                <p>61</p>
+                <p><i class="iconfont icon-shape6"></i></p>
+            </li>
+            <li>
+                <p>2级</p>
+                <p><i class="iconfont icon-changhongchuifeng"></i></p>
+            </li>
+        </ul> -->
+    </div>
+</div>
+
+ <div class="leftBar">
+    <ul>
+        <li onclick="argiObj.link('credit-evaluation.html')" style="padding-top: 5px;" class="active">
+            <i class="iconfont icon-zhuye"></i>
+            <p>企业信用一张图</p>
+        </li>
+        <li onclick="argiObj.link('subdivision-field.html')">
+            <i class="iconfont icon-qitalingyu2"></i>
+            <p>细分领域信用</p>
+        </li>
+        <li onclick="argiObj.link('regional-enterprise.html')">
+            <i class="iconfont icon-loudong"></i>
+            <p>区域企业信用</p>
+        </li>
+        <li onclick="argiObj.link('decide-alarm.html')">
+            <i class="iconfont icon-yujing-copy"></i>
+            <p>决策预警</p>
+        </li>
+
+    </ul>
+</div>
+
+
+<script type="text/javascript">
+    $(function(){
+        var localUrl = window.location + '';
+        var spIndex;
+        if (localUrl.indexOf('/credit-evaluation') >= 0) { //企业信用一张图
+            spIndex = 0;
+        } else if (localUrl.indexOf('/subdivision-field') >= 0) { //细分领域信用
+            spIndex = 1;
+        } else if (localUrl.indexOf('/regional-enterprise') >= 0) {
+            spIndex = 2;
+        } else if (localUrl.indexOf('/decide-alarm') >= 0) {
+            spIndex = 3;
+        }
+        $(".leftBar ul li").eq(spIndex).addClass("active").siblings().removeClass("active");
+    })
+</script>
+    <div class="credit-content">
+        <div class="credit-box">
+            <div class="condition">
+                <div class="inSel" style="float: right;">
+                    <div class="simSel simSelTime">
+                        <input id="DatePicker1" onclick="WdatePicker({el:'DatePicker1',highLineWeekDay:false,dateFmt:'yyyy-MM',onpicking:selectTime,qsEnabled:false,autoShowQS:false,isShowClear:false,isShowToday:false})" type="text" class="p_myDatePicker" value="2016-6" readonly/><i></i></div>
+                    <div class="simSel simSelChecked">
+                        <span>地区</span><i></i>
+                        <!--<ul class="simSelHide">-->
+                        <!--<li class="mapChina">畜牧业</li>-->
+                        <!--<li class="mapShandong">种植业</li>-->
+                        <!--</ul>-->
+                        <div class="simSelLayer simAllSel" style="left: initial; right: 0">
+                            <div class="selFooter">
+                                选择维度
+                                <div class="allSelect">
+                                    <input type="checkbox" class="chk_1" id="selectAll2" />
+                                    <label for="selectAll2"></label>全选
+                                </div>
+                            </div>
+                            <ul class="selList">
+                                <li>
+                                    <input type="checkbox" class="chk_1" id="n1" />
+                                    <label for="n1"></label>北京
+                                </li>
+                                <li>
+                                    <input type="checkbox" class="chk_1" id="n2" />
+                                    <label for="n2"></label>天津
+                                </li>
+                                <li class="active">
+                                    <input type="checkbox" class="chk_1" id="n3" />
+                                    <label for="n3"></label>山东
+                                </li>
+                                <li>
+                                    <input type="checkbox" class="chk_1" id="n4" />
+                                    <label for="n4"></label>河南
+                                </li>
+                            </ul>
+                            <div class="selHeader">
+                                <button class="button" onclick="changeData()">确定</button>
+                                <button class="button">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="credit-module left">
+                <div class="moduleTit overflow-hidden">各行业D级企业占比 </div>
+                <div class="moduleCont">
+                    <div class="ceModule1H325" id="charts1"></div>
+                </div>
+            </div>
+            <div class="credit-module right">
+                <div class="moduleTit">企业信用等级按行业分布情况
+                    <div class="inSel">
+                        <div class="simSel simSelChecked">
+                            <span>等级</span><i></i>
+                            <!--<ul class="simSelHide">-->
+                            <!--<li class="mapChina">畜牧业</li>-->
+                            <!--<li class="mapShandong">种植业</li>-->
+                            <!--</ul>-->
+                            <div class="simSelLayer simLevelSel" style="left: initial; right: 0">
+                                <div class="selFooter">
+                                    选择维度
+                                    <div class="allSelect">
+                                        <input type="checkbox" class="chk_1" id="selectAll" />
+                                        <label for="selectAll"></label>全选
+                                    </div>
+                                </div>
+                                <ul class="selList" id="selList">
+                                    <li class="active" data-id="">
+                                        <input type="checkbox" class="chk_1" id="m1" />
+                                        <label for="m1"></label><span class="level">A</span>级别
+                                    </li>
+                                    <li class="active">
+                                        <input type="checkbox" class="chk_1" id="m2" />
+                                        <label for="m2"></label><span class="level">AA</span>级别
+                                    </li>
+                                    <li class="active">
+                                        <input type="checkbox" class="chk_1" id="m3" />
+                                        <label for="m3"></label><span class="level">AAA</span>级别
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" class="chk_1" id="m4" />
+                                        <label for="m4"></label><span class="level">B</span>级别
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" class="chk_1" id="m5" />
+                                        <label for="m5"></label><span class="level">BB</span>级别
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" class="chk_1" id="m7" />
+                                        <label for="m7"></label><span class="level">BBB</span>级别
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" class="chk_1" id="m8" />
+                                        <label for="m8"></label><span class="level">C</span>级别
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" class="chk_1" id="m9" />
+                                        <label for="m9"></label><span class="level">CC</span>级别
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" class="chk_1" id="m10" />
+                                        <label for="m9"></label><span class="level">CCC</span>级别
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" class="chk_1" id="m11" />
+                                        <label for="m9"></label><span class="level">D</span>级别
+                                    </li>
+                                </ul>
+                                <div class="selHeader">
+                                    <button class="button" onclick="doThis()">确定</button>
+                                    <button class="button">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="moduleCont">
+                    <div class="ceModule1H325" id="charts2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="credit-module all" style="clear: both;">
+            <div class="moduleTit overflow-hidden">行业营收区域分布</div>
+            <div class="moduleCont">
+                <div class="ceModule1H470" id="charts3"></div>
+            </div>
+        </div>
+        <div class="credit-box">
+            <div class="credit-module left">
+                <div class="moduleTit overflow-hidden">失信行为解读 </div>
+                <div class="moduleCont">
+                    <div class="ceModule1H325" id="charts4"></div>
+                </div>
+            </div>
+            <div class="credit-module right">
+                <div class="moduleTit">失信企业黑名单</div>
+                <div class="moduleCont">
+                    <div class="ceModule1H325 innerTab">
+                        <table>
+                            <tr>
+                                <th>序号</th>
+                                <th>企业名称</th>
+                                <th>信用等级</th>
+                                <th>失信行为总次数</th>
+                            </tr>
+                            <tr>
+                                <td>01</td>
+                                <td>济宁奕涵园林绿化工程有限公司</td>
+                                <td>C</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>江山市泰安木制品厂</td>
+                                <td>C</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td>莱芜鲁中酒业有限公司</td>
+                                <td>D</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>04</td>
+                                <td>临沂星期九生态农业有限公司</td>
+                                <td>C</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>05</td>
+                                <td>临沂高新区万鹏酒行</td>
+                                <td>C</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>06</td>
+                                <td>菏泽市三金酒水有限公司</td>
+                                <td>D</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>07</td>
+                                <td>济宁久益粮食仓储有限公司</td>
+                                <td>C</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>08</td>
+                                <td>菏泽市牡丹区转角冷饮店</td>
+                                <td>D</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>09</td>
+                                <td>山东德州建鑫纺织橡塑制品有限公司</td>
+                                <td>C</td>
+                                <td>2</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/d3.v4.min.js"></script>
+    <script src="../js/commonLibMap.min.js"></script>
+    <script src="../js/d3.min.js"></script>
+    <script src="../js/d3-charts.min.js"></script>
+    <script src="../js/jquery.mCustomScrollbar.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var winH = $(window).height();
+        if (winH <= 670) {
+            $("body").height(590);
+        } else {
+            $("body").height(winH - 80);
+        }
+
+        $(".jcyj dt p").on("click", function() {
+            $(this).addClass("active").siblings().removeClass("active");
+            var index = $(this).index();
+            console.log(index)
+            $(".jcyj dl dd").eq(index).show().siblings('dd').hide();
+        })
+
+
+    })
+    var ceModule3Cont = charts.init({
+        id: 820,
+        container: "ceModule3Cont",
+        option: {}
+    });
+    var ceModule4Cont = charts.init({
+        id: 825,
+        container: "ceModule4Cont",
+        option: {}
+    });
+    var ceModule5Cont = charts.init({
+        id: 824,
+        container: "ceModule5Cont",
+        option: {}
+    });
+
+    // 四个echarts 图表
+    charts.init({
+        id: 829,
+        container: "charts1",
+        option: {
+            tooltip : {
+               
+                /*formatter:'{b}<br />{a}:{c}%'*/
+                formatter:function(param){
+                    console.log(param)
+                    if(param[0].value >= 13){
+                        return '<span style="color:red">预警:</span> '+param[0].name+"<br />"+param[0].seriesName+':'+param[0].value+'%'
+                    }
+                    else{
+                        return param[0].name+"<br />"+param[0].seriesName+':'+param[0].value+'%'
+                    }
+                }
+            },
+            label: {
+                normal: {
+                    textStyle: {
+                        color: "#fff"
+                    }
+                }
+            },
+            series: [{
+                data: [{
+                    value: 12,
+
+                }, {
+                    value: 6,
+                }, {
+                    value: 16,
+                    itemStyle: {
+                        normal: {
+                            barBorderColor: '#817026',
+                            color: 'rgba(129,112,38,.5)'
+                        },
+                        emphasis: {
+                            barBorderColor: '#867115',
+                            color: 'rgba(134,113,21,.6)'
+                        }
+                    }
+                    
+                }, {
+                    value: 16,
+                    itemStyle: {
+                        normal: {
+                            barBorderColor: '#817026',
+                            color: 'rgba(129,112,38,.5)'
+                        },
+                        emphasis: {
+                            barBorderColor: '#867115',
+                            color: 'rgba(134,113,21,.6)'
+                        }
+                    }
+                }, {
+                    value: 8
+                }, {
+                    value: 4
+                }, {
+                    value: 2,
+                }, {
+                    value: 14,
+                    itemStyle: {
+                        normal: {
+                            barBorderColor: '#817026',
+                            color: 'rgba(129,112,38,.5)'
+                        },
+                        emphasis: {
+                            barBorderColor: '#867115',
+                            color: 'rgba(134,113,21,.6)'
+                        }
+                    }
+                }, {
+                    value: 10
+                }, {
+                    value: 6
+                }, {
+                    value: 7
+                }, {
+                    value: 6
+                }, {
+                    value: 6
+                }]
+            }]
+
+        }
+    });
+
+
+
+
+
+    //企业信用等级按行业分布情况
+
+    var _series = [{
+            name: 'A',
+            type: 'bar',
+            barWidth: 8,
+            stack: '总量',
+            itemStyle: {
+                normal: {
+                    barBorderColor: '#ffde00',
+                    color: 'rgba(255,213,0,.5)'
+                }
+            },
+            data: [68, 53, 122, 72, 70, 240, 105, 306, 128, 514, 244, 670]
+        }, {
+            name: 'AA',
+            type: 'bar',
+            stack: '总量',
+            itemStyle: {
+                normal: {
+                    barBorderColor: '#fe4818',
+                    color: 'rgba(254,72,24,.5)'
+
+                }
+
+            },
+            data: [20, 18, 72, 50, 32, 126, 57, 114, 48, 264, 99, 240]
+        }, {
+            name: 'AAA',
+            type: 'bar',
+            stack: '总量',
+            itemStyle: {
+                normal: {
+                    barBorderColor: '#5cfc31',
+                    color: 'rgba(92,252,49,.5)'
+                }
+            },
+            data: [12, 16, 49, 39, 13, 86, 33, 110, 22, 169, 47, 91]
+        }
+
+    ]
+
+
+    var _seriesA = [{
+        name: 'A',
+        type: 'bar',
+        barWidth: 8,
+        stack: '总量',
+        itemStyle: {
+            normal: {
+                barBorderColor: '#ffde00',
+                color: 'rgba(255,213,0,.5)'
+            }
+        },
+        data: [68, 53, 122, 72, 70, 240, 105, 306, 128, 514, 244, 670]
+    }]
+    charts.init({
+        id: 830,
+        container: "charts2",
+        option: {
+            yAxis: {
+                data: ['农、林、牧、渔服务业', '林业', '烟酒饮料茶', '渔业', '农产品仓储租赁及其他', '食品制造业', '畜牧业', '农药、肥料及农业机械设备制造业', '木材加工和木、竹、藤、棕、草制品业', '农副食品加工业', '农业', '批发零售业']
+            },
+
+            series: _series
+        }
+    });
+
+
+    function doThis() {
+        var arr = [];
+        $("#selList .active").each(function(i) {
+            var text = $(this).find(".level").text();
+            arr.push(text);
+        });
+        console.log(arr.length)
+        if (arr.length != 3) {
+            charts.init({
+                id: 830,
+                container: "charts2",
+                option: {
+                    yAxis: {
+                        data: ['农、林、牧、渔服务业', '林业', '烟酒饮料茶', '渔业', '农产品仓储租赁及其他', '食品制造业', '畜牧业', '农药、肥料及农业机械设备制造业', '木材加工和木、竹、藤、棕、草制品业', '农副食品加工业', '农业', '批发零售业']
+                    },
+
+                    series: _seriesA
+                }
+            });
+
+        } else {
+            charts.init({
+                id: 830,
+                container: "charts2",
+                option: {
+                    yAxis: {
+                        data: ['农、林、牧、渔服务业', '林业', '烟酒饮料茶', '渔业', '农产品仓储租赁及其他', '食品制造业', '畜牧业', '农药、肥料及农业机械设备制造业', '木材加工和木、竹、藤、棕、草制品业', '农副食品加工业', '农业', '批发零售业']
+                    },
+
+                    series: _series
+                }
+            });
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+    charts.init({
+        id: 834,
+        container: "charts3",
+        option: {}
+    });
+    charts.init({
+        id: 832,
+        container: "charts4",
+        option: {
+            series: [{
+                data: [{
+                    value: 2,
+                    name: '批发零售业'
+                }, {
+                    value: 6,
+                    name: '农业'
+                }, {
+                    value: 8,
+                    name: '农副食品加工'
+                }, {
+                    value: 1,
+                    name: '畜牧业'
+                }, {
+                    value: 2,
+                    name: '农药、肥料及农业机械\n设备制造业'
+                }, {
+                    value: 35,
+                    name: '食品制造业'
+                }, {
+                    value: 7,
+                    name: '农产品仓储租赁及其他'
+                }, {
+                    value: 8,
+                    name: '农、林、牧、渔服务业'
+                }, {
+                    value: 13,
+                    name: '木材加工和木、竹、藤、\n棕、草制品业'
+                }, {
+                    value: 8,
+                    name: '林业'
+                }, {
+                    value: 2,
+                    name: '渔业'
+                }, {
+                    value: 6,
+                    name: '烟酒饮料茶制造业'
+                }, {
+                    value: 2,
+                    name: '其他'
+                }]
+            }]
+
+
+        }
+    });
+
+
+
+    //加载滚动条
+    $('.selList').mCustomScrollbar({
+        axis: "y",
+        theme: "minimal-dark",
+        autoHideScrollbar: true
+    });
+
+
+    function changeData() {
+        charts.init({
+            id: 829,
+            container: "charts1",
+            option: {}
+        });
+        charts.init({
+            id: 830,
+            container: "charts2",
+            option: {
+                yAxis: {
+                    data: ['农、林、牧、渔服务业', '林业', '烟酒饮料茶', '渔业', '农产品仓储租赁及其他', '食品制造业', '畜牧业', '农药、肥料及农业机械\n设备制造业', '木材加工和木、竹、藤、\n棕、草制品业', '农副食品加工业', '农业', '批发零售业']
+                },
+
+                series: _series
+            }
+        });
+        charts.init({
+            id: 834,
+            container: "charts3",
+            option: {
+                series: [{
+                    data: [370, 1250, 1600, 2335, 1278, 550, 700, 1820, 450, 790, 1263, 3200, 3800]
+                }]
+            }
+        });
+        charts.init({
+            id: 832,
+            container: "charts4",
+            option: {
+                series: [{
+                    data: [{
+                        value: 2,
+                        name: '批发零售业'
+                    }, {
+                        value: 6,
+                        name: '农业'
+                    }, {
+                        value: 8,
+                        name: '农副食品加工'
+                    }, {
+                        value: 1,
+                        name: '畜牧业'
+                    }, {
+                        value: 2,
+                        name: '农药、肥料及农业机械\n设备制造业'
+                    }, {
+                        value: 35,
+                        name: '食品制造业'
+                    }, {
+                        value: 7,
+                        name: '农产品仓储租赁及其他'
+                    }, {
+                        value: 8,
+                        name: '农、林、牧、渔服务业'
+                    }, {
+                        value: 13,
+                        name: '木材加工和木、竹、藤、\n棕、草制品业'
+                    }, {
+                        value: 8,
+                        name: '林业'
+                    }, {
+                        value: 2,
+                        name: '渔业'
+                    }, {
+                        value: 6,
+                        name: '烟酒饮料茶制造业'
+                    }, {
+                        value: 2,
+                        name: '其他'
+                    }]
+                }]
+
+            }
+        });
+    }
+
+
+    function selectTime() {
+        changeData();
+    }
+    </script>
+</body>
+
+</html>

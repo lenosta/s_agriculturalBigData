@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" id="industryChainTracing">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>农业监测预警大数据平台</title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/fyw.css">
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script src="../layui/lay/dest/layui.all.js"></script>
+    <script src="../js/WdatePicker.js"></script>
+</head>
+<body>
+<div class="header">
+    <h1><a href="###" class="logo"><img id="headerImg" src="../images/header-zs.png"></a></h1>
+    <div class="headerR">
+        <div class="headerR_r">
+            <a href="navigation.html">返回导航页</a>
+        </div>
+        <ul class="headerR_l">
+            <li class="headerR_lTime">
+                <p>2016/11/11 星期五</p>
+                <p class="headerR_lTimeDay"><span>七天预报</span></p>
+            </li>
+            <li>
+                <p>晴</p>
+                <p><i class="iconfont icon-zhaoshenbian02"></i></p>
+            </li>
+            <li>
+                <p>4-7</p>
+                <p>℃</p>
+            </li>
+            <li>
+                <p>94</p>
+                <p>AQI</p>
+            </li>
+            <li>
+                <p>61</p>
+                <p><i class="iconfont icon-shape6"></i></p>
+            </li>
+            <li>
+                <p>2级</p>
+                <p><i class="iconfont icon-changhongchuifeng"></i></p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="leftBar">
+    <ul>
+        <li style="padding-top: 5px;" onclick="javascript:location.href='industryChainTracing.html'">
+            <i class="iconfont icon-zhuye"></i>
+            <p>追溯预警一张图</p>
+        </li>
+        <li onclick="javascript:location.href='originTracing.html'">
+            <i class="iconfont icon-dizhi"></i>
+            <p>产地追溯</p>
+        </li>
+        <li onclick="javascript:location.href='circulationTracing.html'">
+            <i class="iconfont icon-liutong"></i>
+            <p>流通追溯</p>
+        </li>
+        <li onclick="javascript:location.href='areaTracing.html'">
+            <i class="iconfont icon-xiaoshou"></i>
+            <p>销地追溯</p>
+        </li>
+        <li onclick="javascript:location.href='detectionTracing.html'">
+            <i class="iconfont icon-iconset0398"></i>
+            <p>检测追溯</p>
+        </li>
+
+    </ul>
+</div>
+
+<div class="content">
+    <div class="contTit">省/县区域农产品流向追溯</div>
+
+    <div class="inSel">
+        地区：
+        <div class="simSel margin-right-20">
+            <span id="typearea">全国</span><i></i>
+            <ul class="simSelHide">
+                <li onclick="selectArea(this.innerHTML)">全国</li>
+                <li onclick="selectArea(this.innerHTML)">山东</li>
+            </ul>
+        </div>
+        种类：
+        <div class="simSel">
+            <span id="typeval">蔬菜</span><i></i>
+            <ul class="simSelHide" style="z-index: 10000;">
+                <li onclick="select1(this.innerHTML)">粮油</li>
+                <li class="text-red" onclick="select1(this.innerHTML)">蔬菜</li>
+                <li class="text-red" onclick="select1(this.innerHTML)">禽畜</li>
+                <li onclick="select1(this.innerHTML)">水产品</li>
+            </ul>
+        </div>
+        时间：
+        <div class="simSel simSelTime simSelTime1"><input id="DatePicker1"
+                                                          onclick="WdatePicker({el:'DatePicker1',highLineWeekDay:false,onpicking:startpick,dateFmt:'yyyy-MM',qsEnabled:false,autoShowQS:false,isShowClear:false,isShowToday:false})"
+                                              type="text" class="p_myDatePicker" value="2016-11"/>
+            <i></i>
+        </div>
+        <div class="simSel simSelTime" style="margin-right: 0;"><input id="DatePicker2"
+                                              onclick="WdatePicker({el:'DatePicker2',highLineWeekDay:false,onpicking:endpick,dateFmt:'yyyy-MM',qsEnabled:false,autoShowQS:false,isShowClear:false,isShowToday:false})"
+                                              type="text" class="p_myDatePicker" value="2016-12"/>
+            <i></i>
+        </div>
+
+    </div>
+
+    <ul class="visualMap">
+        <li class="visualMap1"><p>起点</p></li>
+        <li class="visualMap2"><p>流通</p></li>
+        <li class="visualMap3"><p>终点</p></li>
+    </ul>
+
+    <div class="module module1">
+        <div class="moduleTit">可追溯农产品生产销售指数</div>
+        <div class="moduleCont" id="chart1">
+
+        </div>
+    </div>
+
+    <div class="modulebox2">
+        <div class="module">
+            <div class="moduleTit">主要农产品追溯信息D级异常占比预警</div>
+            <div class="moduleCont" id="chart2">
+        </div>
+
+
+        </div>
+    </div>
+
+    <div class="module module3">
+        <div class="moduleTit">
+            山东农产品区域销售结构
+        </div>
+        <div class="moduleCont" id="chart3"></div>
+    </div>
+
+    <div class="module module4">
+        <div class="moduleTit">销售区域<span id="areaName">广州</span>农产品销售量占比</div>
+        <div class="moduleCont">
+            <div  class="module4Cont" id="chart4">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="module module5">
+        <div class="moduleTit">
+           农产品质量安全检测预警
+
+        </div>
+        <div class="moduleCont" id="chart5">
+
+        </div>
+    </div>
+    <div class="module module6">
+        <div class="moduleTit">
+            <span id="listtitle">农药残留</span>预警批次列表
+
+        </div>
+        <div class="moduleCont">
+            <table id="listContent">
+                <tr>
+                    <th>批次号</th>
+                    <th>品种</th>
+                    <th class="th40">企业</th>
+                    <th class="noborderright">检测日期</th>
+                </tr>
+                <tr>
+                    <td>2016B</td>
+                    <td>大蒜</td>
+                    <td class="td40">某农户</td>
+                    <td class="noborderright">2016-12-12</td>
+                </tr>
+                <tr>
+                    <td>2016B</td>
+                    <td>大蒜</td>
+                    <td>某生产基地</td>
+                    <td class="noborderright">2016-12-12</td>
+                </tr>
+                <tr>
+                    <td>2016B</td>
+                    <td>大蒜</td>
+                    <td>某农场</td>
+                    <td class="noborderright">2016-12-12</td>
+                </tr>
+                <tr>
+                    <td>2016B</td>
+                    <td>大蒜</td>
+                    <td>某农场</td>
+                    <td class="noborderright">2016-12-12</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="module module7" id="map"></div>
+</div>
+<script src="../js/echarts-all-3.js"></script>
+<script src="../js/echarts-engine.js"></script>
+<script src="../js/d3.v4.min.js"></script>
+<script src="../js/commonLibMap.min.js"></script>
+<script src="../js/industryChainTracing.js"></script>
+</body>
+</html>

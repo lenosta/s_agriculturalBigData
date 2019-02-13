@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>农业监测预警大数据平台</title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" type="text/css" href="../css/credit-evaluation.css">
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script src="../js/WdatePicker.js"></script>
+    <script src="../js/echarts-all-3.js"></script>
+    <script src="../js/echarts-engine.js"></script>
+    <style type="text/css">
+        #map_popOver h4 {font-size: 16px;}
+        #map{z-index: 999}
+        .d3-dashboard .center-text-value{
+            color: yellow;}
+        #map_popOver {width: 288px;}
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <h1><a href="###" class="logo"><img id="headerImg" src="../images/header-xy.png"></a></h1>
+    <div class="headerR">
+        <div class="headerR_r">
+            <a href="navigation.html">返回导航页</a>
+        </div>
+        <!-- <ul class="headerR_l">
+            <li class="headerR_lTime">
+                <p>2016/11/11 星期五</p>
+                <p class="headerR_lTimeDay"><span>七天预报</span></p>
+            </li>
+            <li>
+                <p>晴</p>
+                <p><i class="iconfont icon-zhaoshenbian02"></i></p>
+            </li>
+            <li>
+                <p>4-7</p>
+                <p>℃</p>
+            </li>
+            <li>
+                <p>94</p>
+                <p>AQI</p>
+            </li>
+            <li>
+                <p>61</p>
+                <p><i class="iconfont icon-shape6"></i></p>
+            </li>
+            <li>
+                <p>2级</p>
+                <p><i class="iconfont icon-changhongchuifeng"></i></p>
+            </li>
+        </ul> -->
+    </div>
+</div>
+
+ <div class="leftBar">
+    <ul>
+        <li onclick="argiObj.link('credit-evaluation.html')" style="padding-top: 5px;" class="active">
+            <i class="iconfont icon-zhuye"></i>
+            <p>企业信用一张图</p>
+        </li>
+        <li onclick="argiObj.link('subdivision-field.html')">
+            <i class="iconfont icon-qitalingyu2"></i>
+            <p>细分领域信用</p>
+        </li>
+        <li onclick="argiObj.link('regional-enterprise.html')">
+            <i class="iconfont icon-loudong"></i>
+            <p>区域企业信用</p>
+        </li>
+        <li onclick="argiObj.link('decide-alarm.html')">
+            <i class="iconfont icon-yujing-copy"></i>
+            <p>决策预警</p>
+        </li>
+
+    </ul>
+</div>
+
+
+<script type="text/javascript">
+    $(function(){
+        var localUrl = window.location + '';
+        var spIndex;
+        if (localUrl.indexOf('/credit-evaluation') >= 0) { //企业信用一张图
+            spIndex = 0;
+        } else if (localUrl.indexOf('/subdivision-field') >= 0) { //细分领域信用
+            spIndex = 1;
+        } else if (localUrl.indexOf('/regional-enterprise') >= 0) {
+            spIndex = 2;
+        } else if (localUrl.indexOf('/decide-alarm') >= 0) {
+            spIndex = 3;
+        }
+        $(".leftBar ul li").eq(spIndex).addClass("active").siblings().removeClass("active");
+    })
+</script>
+<div class="content">
+    <div class="contTit">农业产业链企业信用评估分布</div>
+    <ul class="visualMap">
+        <li class="visualMap1">
+            <p>普通企业</p>
+        </li>
+        <li class="visualMap2">
+            <p>黑名单企业</p>
+        </li>
+        <li class="visualMap3">
+            <p>优质企业</p>
+        </li>
+    </ul>
+    <div class="module module1">
+        <div class="moduleTit overflow-hidden">全省农业产业链企业信用综合指数 </div>
+        <div class="moduleCont">
+            <div class="ceModule1H115 d3-dashboard"></div>
+        </div>
+    </div>
+    <div class="module module2" style="z-index: 101">
+        <div class="moduleTit">决策预警</div>
+        <div class="moduleCont">
+            <div class="jcyj">
+                <dl>
+                    <dt>
+                    <p class="active">优质企业名单</p>
+                    <p>黑名单企业</p>
+                    </dt>
+                    <dd>
+                        <p>烟台明威海洋食品有限公司</p>
+                        <p>威海市文章电子商务有限公司</p>
+                        <p>青岛啤酒（济南）有限公司</p>
+                        <p>济南一叶舟商贸有限公司</p>
+                        <p>济南鲜汇食品有限公司</p>
+                    </dd>
+                    <dd style="display: none;">
+                        <p>济宁奕涵园林绿化工程有限公司</p>
+                        <p>莱芜鲁中酒业有限公司</p>
+                        <p>临沂星期九生态农业有限公司</p>
+                        <p>菏泽市三金酒水有限公司</p>
+                       
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="module module3" style="top: 705px; width: 98.5%; left: 10px; right: 10px;">
+        <div class="moduleTit">细分领域信用</div>
+        <div class="moduleCont">
+            <div class="ceModule1H150" style="height:500px;overflow: hidden;">
+                <div class="selList" style="height: 500px;">
+                    <p style="height: 500px;" id="ceModule3Cont"></p> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="module module4" style="top:156px; width: 25%;z-index: 998; ">
+        <div class="moduleTit">全部企业数量变化</div>
+        <div class="moduleCont">
+            <div id="ceModule4Cont" class="ceModule1H150" style="height: 200px;"></div>
+        </div>
+    </div>
+    <div class="module module5" style="width: 25%; top: 438px;">
+        <div class="moduleTit">产业链企业数量变化</div>
+        <div class="moduleCont">
+            <div id="ceModule5Cont" class="ceModule1H150" style="height: 200px;"></div>
+        </div>
+    </div>
+    <div class="module module7" id="map"></div>
+
+
+    <div class="dateAdd">
+        <div class="inSel">  
+                地区：
+                <div class="simSel mr20">
+                    <span>山东</span><i></i>
+                    <ul class="simSelHide" style="display: none;">
+                        <li class="mapChina">山东</li>                       
+                    </ul>
+                </div>
+                时间：                   
+                <div class="simSel simSelTime" style="margin-right: 5px">
+                    <span>2016-1</span><i></i>
+                    <ul class="simSelHide" style="display: none; height: 180px; padding-top: 5px; margin-top: 0px; padding-bottom: 5px; margin-bottom: 0px;">
+                        <li class="" onclick="changeData()">2016-1</li>
+                        <li class="" onclick="changeData()">2016-2</li>
+                        <li class="" onclick="changeData()">2016-3</li>
+                        <li class="" onclick="changeData()">2016-4</li>
+                        <li class="" onclick="changeData()">2016-5</li>
+                        <li class="" onclick="changeData()">2016-6</li>
+                    </ul>
+                </div>-
+                <div class="simSel">
+                    <span>2016-6</span><i></i>
+                    <ul class="simSelHide" style="display: none; height: 180px; padding-top: 5px; margin-top: 0px; padding-bottom: 5px; margin-bottom: 0px;">
+                        <li class="" onclick="changeData()">2016-1</li>
+                         <li class="" onclick="changeData()">2016-2</li>
+                        <li class="" onclick="changeData()">2016-3</li>
+                        <li class="" onclick="changeData()">2016-4</li>
+                        <li class="" onclick="changeData()">2016-5</li>
+                        <li class="" onclick="changeData()">2016-6</li>
+                    </ul>
+                </div>
+     </div>
+    </div>
+</div>
+<script src="../js/d3.v4.min.js"></script>
+<script src="../js/commonLibMap.min.js"></script>
+<script src="../js/d3.min.js"></script>
+<script src="../js/d3-charts.min.js"></script>
+<script src="../js/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript">
+    $(function() {
+        /* var winH = $(window).height();
+        if(winH <= 670){
+            $("body").height(590);
+        }else{
+            $("body").height(winH - 80);
+        }*/
+
+        var winH = $(window).height();
+        if(winH <= 760){            
+            //$("body").height(590);
+            $("body").height(700);
+        }else{
+            //$("body").height(590);
+            //$("body").height(winH - 80);
+           // $("body").height(winH - 280);
+        }
+
+
+
+
+
+        $(".jcyj dt p").on("click", function() {
+            $(this).addClass("active").siblings().removeClass("active");
+            var index = $(this).index();
+            console.log(index)
+            $(".jcyj dl dd").eq(index).show().siblings('dd').hide();
+        })
+
+        $('.mapChina').on('click', function() {
+            var cmap = showMap('山东', 2);
+
+        });
+
+    })
+    var ceModule3Cont = charts.init({
+        id: 820,
+        container: "ceModule3Cont",
+        option: {
+             yAxis: {
+       
+               data:['农、林、牧、渔服务业','林业','烟酒饮料茶','渔业','农产品仓储租赁及其他','食品制造业',
+               '畜牧业','农药、肥料及农业机械设备制造业','木材加工和木、竹、藤、棕、草制品业','农副食品加工业','农业','批发零售业']
+                
+            },
+             series: [
+                {
+                    name: '普通企业',                   
+                    data: [2011, 2349, 2046, 2950, 3836,4903, 5210, 5247, 9465, 9813,16929,56892]
+                },
+                {
+                    name: '黑名单企业',                    
+                    data:[351, 192, 496, 291, 183,801, 960, 778, 1422, 1465,839, 6018]
+                },
+                {
+                    name: '优质企业',                   
+                    data:[100, 87, 243, 161, 115,452, 195, 530, 198, 947,390, 1001]
+                }
+                
+            ]
+        }
+    });
+    var ceModule4Cont = charts.init({
+        id: 825,
+        container: "ceModule4Cont",
+        option: {
+            series: [
+                {
+                    name: '优质企业',                    
+                    data:[349, 218, 131, 147, 45,99]
+                },
+                {
+                    name: '普通企业',                    
+                     data:[567, 436, 153, 365, 52,183]
+                },
+                {
+                    name: '黑名单企业',                   
+                     data:[63, 46, 11, 38, 7,15]
+                }
+            ]
+        }
+    });
+    var ceModule5Cont = charts.init({
+        id: 824,
+        container: "ceModule5Cont",
+        option: {}
+    });
+
+    var data = {
+        points: [{
+            "title": "济南花之语生物技术有限公司",
+            "log": "117.016678",
+            "lat": "36.679368",
+            core: 525,
+            /*star: 4,*/
+            grade:"B",
+            "icon": {
+                url: '../images/icon_1.png',
+                width: 50,
+                height: 50,
+                hoverUrl: '../images/icon_1.png'
+            }
+        }, {
+            "title": "枣庄市宗发农业发展有限公司",
+            "log": "117.418029",
+            "lat": "34.969897",
+            core: 428,
+            grade: "CC",            
+            "icon": {
+                url: '../images/icon_2.png',
+                width: 50,
+                height: 50,
+                hoverUrl: '../images/icon_2.png'
+            }
+        }, {
+            "title": "烟台明威海洋食品有限公司",
+            "log": "121.409455",
+            "lat": "37.547853",
+            core: 729,
+            star: 4,
+            grade:"AA",
+            "icon": {
+                url: '../images/icon_3.png',
+                width: 50,
+                height: 50,
+                hoverUrl: '../images/icon_3.png'
+            }
+        }]
+    };
+
+    function clickHandle(event, data) {
+         if(!data.properties.childNum){
+             return;
+         };
+        if (data._type == 'area') {
+
+            showMap(data.properties.name, true);
+        }}
+
+
+    function mouseOverHandle(event, data) {
+        if (data._type == 'point') {
+
+            /*if(data.sf == 'qingdao'){
+                alert(1)
+            }
+*/
+
+            var rect = event.target.getBoundingClientRect();
+            var $tip = $('#map_popOver');
+            if (!$tip.length) {
+                $tip = $('<div id="map_popOver">');
+                $('#map').append($tip);
+            }
+            $tip.html(popOver(data));
+            var offset = $('#map svg').offset();
+            $tip.css({
+                left: (rect.right - rect.width / 2 - offset.left + window.scrollX) + 'px',
+                top: (rect.bottom - rect.height / 2 - offset.top + window.scrollY) + 'px',
+                display: 'block'
+            });
+        }
+    }
+
+    function mouseOutHandle(event, data) {
+        if (!$(event.toElement).is('#map_popOver')) {
+            $('#map_popOver').css({
+                display: 'none'
+            });
+        }
+    }
+
+    function popOver(param) {
+        var star = '';
+        for (var i = 0, len = param.star; i < len; i++) {
+            star += '★';
+        }
+        return '<h4>' + (param.title) + '</h4>' +
+            '<p><span class="import">' + (param.core) + '</span><span>信用评分</span></p>' +
+            '<p><span class="star">' + param.grade + '</span><span>信用等级</span></p>'
+    }
+
+
+
+    commonLib.CMap.config.baseDir = '../geoJson/'
+
+    function showMap(name, isDrill) {
+        var map = new commonLib.CMap({
+            dom: document.getElementById('map'),
+            data: data,
+            mouseOutHandle: mouseOutHandle,
+            mouseOverHandle: mouseOverHandle,
+            clickHandle: isDrill ? clickHandle : null,
+            name: name
+        });
+        return map;
+    }
+
+    var cmap = showMap('山东', true);
+
+
+    var dashboard = d3Charts.chart()
+    // 背景设置
+        .width('100%')
+        .height(115)
+        .backgroundColor('100%')
+        // 中心数值文字设置
+        .centerTextValue(87)
+        .centerTextValueColor('yellow')
+        .centerTextValueFontSize(40)
+        // 中心箭头线设置
+        // 中心文本文字设置
+        .centerTextTitle('优')
+        .centerTextTitleColor('yellow')
+        .centerTextTitleFontSize(30)
+        // 内轨轨道设置
+        .orbitColorIn('#ccc')
+        .scaleColor('#4b6692')
+        //仪表盘箭头位置
+        .centerArrowLineX1(75)
+        .centerArrowLineX2(75)
+
+    d3.select('.d3-dashboard').call(dashboard);
+
+
+    function changeData(){
+        var ceModule3Cont = charts.init({
+        id: 820,
+        container: "ceModule3Cont",
+        option: {
+             yAxis: {
+       
+               data : ['畜牧业','林业','木材加工和木、竹、藤、棕、草制品业','农、林、牧、渔服务业','农产品仓储租赁及其他','农副食品加工业','农药、肥料及农业机械设备制造业','农业','批发零售业','食品制造业','烟酒饮料茶','渔业']
+                
+            },
+             series: [
+                {
+                    name: '普通企业',                   
+                    data: [12067, 4994, 12691, 4539, 12029,15008, 8028, 29644, 94529, 9041,3766,3715]
+                },
+                {
+                    name: '黑名单企业',                    
+                    data:[1431, 288, 1668, 519, 929,1941, 965, 1496, 10409, 1224,682, 393]
+                },
+                {
+                    name: '优质企业',                   
+                    data:[388, 158, 247, 208, 255,1203, 722, 765, 1420, 623,392, 179]
+                }
+                
+            ]
+        }
+    });
+        var ceModule4Cont = charts.init({
+            id: 825,
+            container: "ceModule4Cont",
+            option: {
+                series: [
+                    {
+                        name: '优质企业',                    
+                        data:[349, 218, 131, 147, 45,99]
+                    },
+                    {
+                        name: '普通企业',                    
+                         data:[567, 436, 153, 365, 52,183]
+                    },
+                    {
+                        name: '黑名单企业',                   
+                         data:[63, 46, 11, 38, 7,15]
+                    }
+                ]
+            }
+        });
+        var ceModule5Cont = charts.init({
+            id: 824,
+            container: "ceModule5Cont",
+            option: {}
+        });
+
+
+       var dashboard = d3Charts.chart()
+    // 背景设置
+        .width('100%')
+        .height(115)
+        .backgroundColor('100%')
+        // 中心数值文字设置
+        .centerTextValue(87)
+        .centerTextValueColor('yellow')
+        .centerTextValueFontSize(40)
+        // 中心箭头线设置
+        // 中心文本文字设置
+        .centerTextTitle('优')
+        .centerTextTitleColor('#ff4504')
+        .centerTextTitleFontSize(30)
+        // 内轨轨道设置
+        .orbitColorIn('#ccc')
+        .scaleColor('#4b6692')
+        //仪表盘箭头位置
+        .centerArrowLineX1(75)
+        .centerArrowLineX2(75)
+        $(".d3-dashboard").children("svg").remove();
+        d3.select('.d3-dashboard').call(dashboard);
+    }
+
+
+
+     $('.selList').mCustomScrollbar({
+            axis:"y",
+            theme:"minimal-dark",
+            autoHideScrollbar:true
+        });
+
+</script>
+</body>
+
+</html>

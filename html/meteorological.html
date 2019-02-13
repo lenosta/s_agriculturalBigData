@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>农业监测预警大数据平台</title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/warning.css">
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script src="../layui/lay/dest/layui.all.js"></script>
+    <style>
+        #map_popOver h4.t1{color:yellow}
+        #map_popOver div.t1{color:#FFF}
+        #map_tooltip h4{color:yellow}
+        #map_tooltip div{color:#FFF}
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1><a href="###" class="logo"><img id="headerImg" src="../images/headLogo.png"></a></h1>
+    <div class="headerR">
+        <div class="headerR_r">
+            <a href="navigation.html">返回导航页</a>
+        </div>
+        <!--<ul class="headerR_l">
+            <li class="headerR_lTime">
+                <p>2016/11/11 星期五</p>
+                <p class="headerR_lTimeDay"><span>七天预报</span></p>
+            </li>
+            <li>
+                <p>晴</p>
+                <p><i class="iconfont icon-zhaoshenbian02"></i></p>
+            </li>
+            <li>
+                <p>4-7</p>
+                <p>℃</p>
+            </li>
+            <li>
+                <p>94</p>
+                <p>AQI</p>
+            </li>
+            <li>
+                <p>61</p>
+                <p><i class="iconfont icon-shape6"></i></p>
+            </li>
+            <li>
+                <p>2级</p>
+                <p><i class="iconfont icon-changhongchuifeng"></i></p>
+            </li>
+        </ul>-->
+    </div>
+</div>
+
+<div class="leftBar" style="position: absolute;">
+    <ul>
+        <li style="padding-top: 5px;" onclick="argiObj.link('index.html')">
+            <i class="iconfont icon-zhuye"></i>
+            <p>监测预警一张图</p>
+        </li>
+        <li onclick="argiObj.link('quality.html')">
+            <i class="iconfont icon-anquan"></i>
+            <p>农产品质量安全</p>
+        </li>
+        <li onclick="argiObj.link('price.html')">
+            <i class="iconfont icon-jiage"></i>
+            <p>农产品价格</p>
+        </li>
+        <li onclick="argiObj.link('sadBalance.html')">
+            <i class="iconfont icon-fuzaijunheng"></i>
+            <p>农产品供需平衡</p>
+        </li>
+        <li onclick="argiObj.link('meteorological.html')">
+            <i class="iconfont icon-qixiangchaxun"></i>
+            <p>农业气象</p>
+        </li>
+        <!-- <li>
+            <i class="iconfont icon-piaochong"></i>
+            <p>农业病虫害</p>
+        </li>
+        <li>
+            <i class="iconfont icon-gangcaiyunfeibutie"></i>
+            <p>农业补贴</p>
+        </li>
+        <li onclick="window.open('http://nongye.9cfcf.com/jsp/login_new.jsp')">
+            <i class="iconfont icon-14"></i>
+            <p>网络舆情</p>
+        </li> -->
+    </ul>
+</div>
+<script>
+    $(function(){
+        var localUrl = window.location + '';
+        var spIndex;
+        if (localUrl.indexOf('/index.html') >= 0) { //监测预警一张图
+            spIndex = 0;
+        } else if (localUrl.indexOf('/quality.html') >= 0) { //农产品质量安全
+            spIndex = 1;
+        } else if (localUrl.indexOf('/price.html') >= 0) { //产品价格
+            spIndex = 2;
+        } else if (localUrl.indexOf('/sadBalance.html') >= 0) { //产品供需平衡
+            spIndex = 3;
+        } else if (localUrl.indexOf('/meteorological.html') >= 0) { //农业气象
+            spIndex = 4;
+        }
+        $(".leftBar ul li").eq(spIndex).addClass("active").siblings().removeClass("active");
+    })
+</script>
+
+<div class="content">
+    <div class="contMap">
+        <div id="map" class="contMapNr"></div>
+        <div class="visualMap_2">
+            <p>降水量</p>
+            <dl>
+                <dt>0</dt>
+                <dd></dd>
+                <dt>100</dt>
+            </dl>
+        </div>
+        <div class="visualMap_3">
+            <p>作物生育期</p>
+            <ul>
+                <li class="bg1">出苗</li>
+                <li class="bg2">现蕾</li>
+                <li class="bg3">开花</li>
+                <li class="bg4">裂铃</li>
+                <li class="bg5">吐絮</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="introductionText">
+        今日 济南 晴 轻微霾  <span class="orange"><strong>4</strong>℃-<strong>6</strong>℃</span>
+        |
+        AQI最高值:<span class="orange"><strong>94</strong></span>
+        |
+        最大相对湿度<span class="orange"><strong>61</strong>%</span>
+        |
+        降水量:<span class="orange"><strong>0</strong>mm</span>
+        |
+        最大风力:<span class="orange"><strong>2</strong>级</span>
+        <div class="simSel simSelChecked whLayer">
+            <span>七天预报</span>
+            <div class="weather">
+                <div class="footer">
+                    七天天气预报
+                    <!--<i class="iconfont icon-shanchu y_close" id="coloseWeather"></i>-->
+                </div>
+                <div class="weather_main">
+                    <ul>
+                        <li>
+                            <span>25日(今日)</span>
+                            <div class="weather_icon">
+                                <i class="iconfont icon-wumai"></i>
+                                <i class="iconfont icon-wumai"></i>
+                            </div>
+                            <span class="info">晴转多云，有 轻度霾，北部</span>
+                            <p class="temperature">
+                                <span>5℃</span>
+                                <span>/</span>
+                                <span>－5℃</span>
+                            </p>
+                            <span>温度</span>
+                        </li>
+                        <li>
+                            <span>26日(明日)</span>
+                            <div class="weather_icon">
+                                <i class="iconfont icon-tianqi1"></i>
+                                <i class="iconfont icon-tianqi801"></i>
+                            </div>
+                            <span class="info">多云转晴</span>
+                            <p class="temperature">
+                                <span>8℃</span>
+                                <span>/</span>
+                                <span>-4℃</span>
+                            </p>
+                            <span>3-4级转微风</span>
+                        </li>
+                        <li>
+                            <span>27日(后天)</span>
+                            <div class="weather_icon">
+                                <i class="iconfont icon-tianqi1"></i>
+                                <i class="iconfont icon-tianqi801"></i>
+                            </div>
+                            <span class="info">晴</span>
+                            <p class="temperature">
+                                <span>7℃</span>
+                                <span>/</span>
+                                <span>-5℃</span>
+                            </p>
+                            <span>微风</span>
+                        </li>
+                        <li>
+                            <span>28日(周一)</span>
+                            <div class="weather_icon">
+                                <i class="iconfont icon-qixiangchaxun"></i>
+                                <i class="iconfont icon-qixiangchaxun"></i>
+                            </div>
+                            <span class="info">多云转阴</span>
+                            <p class="temperature">
+                                <span>6℃</span>
+                                <span>/</span>
+                                <span>-4℃</span>
+                            </p>
+                            <span>微风</span>
+                        </li>
+                        <li>
+                            <span>29日(周二)</span>
+                            <div class="weather_icon">
+                                <i class="iconfont .icon-tianqi"></i>
+                                <i class="iconfont icon-qixiangchaxun"></i>
+                            </div>
+                            <span class="info">阴转多云</span>
+                            <p class="temperature">
+                                <span>3℃</span>
+                                <span>/</span>
+                                <span>-4℃</span>
+                            </p>
+                            <span>微风</span>
+                        </li>
+                        <li>
+                            <span>30日(周三)</span>
+                            <div class="weather_icon">
+                                <i class="iconfont icon-tianqi1"></i>
+                                <i class="iconfont icon-tianqi801"></i>
+                            </div>
+                            <span class="info">晴</span>
+                            <p class="temperature">
+                                <span>7℃</span>
+                                <span>/</span>
+                                <span>-2℃</span>
+                            </p>
+                            <span>微风</span>
+                        </li>
+                        <li class="list">
+                            <span>1日(周四)</span>
+                            <div class="weather_icon">
+                                <i class="iconfont icon-tianqi1"></i>
+                                <i class="iconfont icon-tianqi801"></i>
+                            </div>
+                            <span class="info">晴</span>
+                            <p class="temperature">
+                                <span>7℃</span>
+                                <span>/</span>
+                                <span>-4℃</span>
+                            </p>
+                            <span>微风</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contTit1">农业气象灾害监测预警</div>
+
+    <div class="inSel inSel2">
+        <span class="padL10">气象类型：</span>
+        <div id="mlqxlx" class="simSel mr20">
+            <span>降水量（mm）</span><i></i>
+            <ul class="simSelHide">
+                <li class="mljsl">降水量（mm）</li>
+                <li class="mlqw">气温（℃）</li>
+                <li class="mlrz">日照（h）</li>
+                <li class="mltr">土壤相对湿度（%）</li>
+            </ul>
+        </div>
+        农作物：
+        <div class="simSel">
+            <span>纤维作物</span><i></i>
+            <ul class="simSelHide">
+                <li onclick="tablist(this.innerText)">纤维作物</li>
+                <li onclick="tablist(this.innerText)">粮食作物</li>
+            </ul>
+        </div>
+        <div class="simSel mr20">
+            <span>棉花</span><i></i>
+            <ul class="simSelHide" id="secondMenu">
+                <li>棉花</li>
+            </ul>
+        </div>
+    </div>
+    <div class="inSel text-left">
+        时间：
+        <div class="simSel simSelTime" style="margin-right: 0;"><input id="DatePicker1" onclick="WdatePicker({el:'DatePicker1',highLineWeekDay:false,onpicking:timepick,dateFmt:'yyyy-MM-dd',qsEnabled:false,autoShowQS:false,isShowClear:false,isShowToday:false})" type="text" class="p_myDatePicker" value="2016-8-16" readonly/><i></i></div>
+        地区：
+        <div class="simSel">
+            <span>全国</span><i></i>
+            <ul class="simSelHide">
+                <li class="mapChina">全国</li>
+                <li class="mapShandong">山东</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="module mlmodule1">
+        <div class="moduleTit">受影响品种按区域分布</div>
+        <div class="moduleCont">
+            <div id="mlmodule1Cont" class="mlmodule1Cont"></div>
+        </div>
+    </div>
+
+    <div class="module mlmodule2">
+        <div class="moduleTit">受影响品种按面积分布</div>
+        <div class="moduleCont">
+            <div id="mlmodule2Cont" class="mlmodule2Cont"></div>
+        </div>
+    </div>
+
+    <div class="module mlmodule3">
+        <div class="moduleTit">当前气象预警信号</div>
+        <div class="moduleCont">
+            <div class="mlmodule3Cont">
+                <!--<table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <th class="leidian">雷电</th>
+                        <td class="fabu"><span>发布</span>黄色雷电预警</td>
+                        <td>16时</td>
+                    </tr>
+                    <tr>
+                        <th class="baoyu">暴雨</th>
+                        <td class="fabu"><span>发布</span>黄色暴雨预警</td>
+                        <td>15时</td>
+                    </tr>
+                    <tr>
+                        <th class="bingbao">冰雹</th>
+                        <td class="fabu"><span>发布</span>橙色冰雹预警</td>
+                        <td>14时</td>
+                    </tr>
+                    <tr>
+                        <th class="dafeng">大风</th>
+                        <td class="fabu"><span>发布</span>蓝色大风预警</td>
+                        <td>13时</td>
+                    </tr>
+                    <tr>
+                        <th class="gaowen">高温</th>
+                        <td class="jiechu"><span>解除</span>橙色高温预警</td>
+                        <td>10时</td>
+                    </tr>
+                    <tr>
+                        <th class="taifeng">台风</th>
+                        <td class="jiechu"><span>解除</span>蓝色台风预警</td>
+                        <td>09时</td>
+                    </tr>
+                </table>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="module mlmodule4">
+        <div class="moduleTit">气象预测</div>
+        <div class="moduleCont">
+            <div id="mlmodule4Cont" class="mlmodule4Cont"></div>
+        </div>
+    </div>
+
+    <div class="module mlmodule5">
+        <div class="moduleTit">农业生产防御指南</div>
+        <div class="moduleCont">
+            <div  class="mlmodule5Cont">
+                <table cellpadding="0" cellspacing="0" class="mlmodule5ContTb">
+                    <tr>
+                        <td>四季豆</td>
+                        <td>苗期</td>
+                        <td>大田种植健全田间排水系统，暴雨来临前加强巡查。</td>
+                    </tr>
+                    <tr>
+                        <td>苹果</td>
+                        <td>开花授粉期</td>
+                        <td>防范暴雨带来冰雹灾害，注意收听天气预报，在冰雹区内的盛果园推广应用防雹网。</td>
+                    </tr>
+                    <tr>
+                        <td>螃蟹</td>
+                        <td>出塘期</td>
+                        <td>控制水位，暴雨来临前，密切注意气象预报，大雨前期提前降低鱼池、水库水位。</td>
+                    </tr>
+                    <tr>
+                        <td>玉米</td>
+                        <td>拔节期</td>
+                        <td>对遭受涝灾的玉米，要及时排除田间积水，降低土壤和空气湿度，促进植株恢复生长。</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="../js/WdatePicker.js"></script>
+<script src="../js/echarts-all-3.js"></script>
+<script src="../js/echarts-engine.js"></script>
+<script src="../js/d3.v4.min.js"></script>
+<script src="../js/commonLibMap.min.js"></script>
+<script src="../js/meteorological.js"></script>
+</body>
+</html>

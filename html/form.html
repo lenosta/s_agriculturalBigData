@@ -1,0 +1,133 @@
+<div class="header">
+    <h1><a href="###" class="logo"><img id="headerImg" src="../images/header-xy.png"></a></h1>
+    <div class="headerR">
+        <div class="headerR_r">
+            <a href="navigation.html">返回导航页</a>
+        </div>
+        <ul class="headerR_l">
+            <li class="headerR_lTime">
+                <p>2016/11/11 星期五</p>
+                <p class="headerR_lTimeDay"><span>七天预报</span></p>
+            </li>
+            <li>
+                <p>晴</p>
+                <p><i class="iconfont icon-zhaoshenbian02"></i></p>
+            </li>
+            <li>
+                <p>4-7</p>
+                <p>℃</p>
+            </li>
+            <li>
+                <p>94</p>
+                <p>AQI</p>
+            </li>
+            <li>
+                <p>61</p>
+                <p><i class="iconfont icon-shape6"></i></p>
+            </li>
+            <li>
+                <p>2级</p>
+                <p><i class="iconfont icon-changhongchuifeng"></i></p>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+$(function() {
+    var localUrl = window.location.href;
+    var spIndex;
+    if (localUrl.indexOf('/credit') >= 0) { //信用
+        spIndex = 0;
+    } else if (localUrl.indexOf('/industryChainTracing') >= 0) { //追溯
+        spIndex = 1;
+    }
+    else if (localUrl.indexOf('/index') >= 0) { //预警
+        spIndex = 2;
+    }
+   
+    switch(spIndex){
+        case 0: 
+            console.log(0)
+            headerImg('../images/header-xy.png')
+            break;
+        case 1:
+            console.log(1)
+            headerImg('../images/header-zs.png')
+            break;
+        case 2:
+            console.log(2)
+            headerImg('../images/headLogo.png')
+            break;
+        default:
+            break;    
+    }
+    function headerImg(url)
+    {
+        $("#headerImg").attr("src",url)
+    }
+
+})
+</script>
+
+<form class="layui-form" style="padding-top: 70px"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+  <div class="layui-form-item">
+    <label class="layui-form-label">输入框</label>
+    <div class="layui-input-block">
+      <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">下拉选择框</label>
+    <div class="layui-input-block">
+      <select name="interest" lay-filter="aihao">
+        <option value="0">写作</option>
+        <option value="1">阅读</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">复选框</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="like[write]" title="写作">
+      <input type="checkbox" name="like[read]" title="阅读">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">开关关</label>
+    <div class="layui-input-block">
+      <input type="checkbox" lay-skin="switch">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">开关开</label>
+    <div class="layui-input-block">
+      <input type="checkbox" checked lay-skin="switch">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">单选框</label>
+    <div class="layui-input-block">
+      <input type="radio" name="sex" value="0" title="男">
+      <input type="radio" name="sex" value="1" title="女" checked>
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">请填写描述</label>
+    <div class="layui-input-block">
+      <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+  <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+</form>
+ <script src="../layui/lay/dest/layui.all.js"></script>
+<script>
+
+  var form = layui.form();
+
+</script>

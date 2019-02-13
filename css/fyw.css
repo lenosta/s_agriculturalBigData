@@ -1,0 +1,1011 @@
+/*common part*/
+.border-bottom-0b2b6e {
+  border-bottom: 1px solid #0b2b6e;
+}
+.simSelHide li {
+  color: #FFF;
+}
+#mCSB_1_container li {
+  color: #FFF;
+}
+.text-red {
+  color: red;
+}
+.padding-bottom-14 {
+  padding-bottom: 14px;
+}
+.padding-17 {
+  padding: 0 20px;
+}
+.margin-right-20 {
+  margin-right: 20px;
+}
+.inSel {
+  width: 90%;
+}
+.headerR_l {
+  display: none;
+}
+.simSel span {
+  display: block;
+  text-align: center;
+}
+.simSel input {
+  text-indent: 10px;
+}
+.simSel ul li {
+  text-align: center;
+}
+#map_popOver2 {
+  box-sizing: border-box;
+  position: absolute;
+  padding: 0 34px 24px;
+  background: linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), rgba(4, 53, 117, 0.9);
+  background-position: 14px 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%, center center;
+  background-size: 64px 2px, 25px 2px, 2px 25px, 25px 2px, 2px 25px, 25px 2px, 2px 25px, 100% 100%;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 20px #fff inset;
+  right: 0;
+  text-align: center;
+  max-width: 288px;
+  z-index: 999;
+  opacity: 1;
+  display: none;
+}
+#map_popOver2 h4 {
+  color: #579dbf;
+  font: 18px/66px 'Microsoft Yahei';
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#map_popOver2 p {
+  float: left;
+  width: 50%;
+  margin: 0;
+  padding: 0;
+}
+#map_popOver2 p:first-child {
+  margin-bottom: 24px;
+}
+#map_popOver2 span {
+  display: block;
+  color: #aab2c3;
+  font-size: 12px;
+}
+#map_popOver2 .import {
+  font-size: 24px;
+  color: #ff3b3b;
+  line-height: 30px;
+}
+#map_popOver2 .star {
+  line-height: 30px;
+  font-size: 16px;
+  color: #ffc000;
+}
+#map_popOver2 .pbiaoqian1 {
+  color: #aeefff;
+  font-size: 24px;
+  line-height: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+#map_popOver2 .pbiaoqian2 {
+  color: #ffc000;
+  font-size: 24px;
+  line-height: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+#map_popOver2 .pbiaoqian3 {
+  color: #54fc33;
+  font-size: 24px;
+  line-height: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+#map_popOver2 .pbiaoqian4 {
+  color: #39abff;
+  font-size: 24px;
+  line-height: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+.area_name {
+  font-size: 12px;
+  fill: #ccc;
+}
+.line1 {
+  stroke: #ff0;
+  stroke-width: 2;
+  stroke-dasharray: 5, 5;
+  stroke-dashoffset: 0;
+  fill: none;
+  animation: dash 5s linear infinite;
+}
+.area_name {
+  font-size: 12px;
+  fill: #ccc;
+}
+.line1:hover {
+  stroke-dasharray: 0;
+}
+.line1.line-hover {
+  stroke-dasharray: 0;
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+.map-tooltip2 {
+  position: absolute;
+  background-image: linear-gradient(90deg, #fff600, #fff600), linear-gradient(90deg, #fff600, #fff600), linear-gradient(90deg, #fff600, #fff600), linear-gradient(90deg, #fff600, #fff600), linear-gradient(0deg, #fff600, #fff600), linear-gradient(0deg, #fff600, #fff600), linear-gradient(0deg, #fff600, #fff600), linear-gradient(0deg, #fff600, #fff600), linear-gradient(90deg, rgba(6, 12, 34, 0.50196) 0%, rgba(0, 54, 255, 0.12157) 100%);
+  background-position: top left, top right, bottom left, bottom right, top left, top right, bottom left, bottom right;
+  background-size: 40px 2px, 40px 2px, 40px 2px, 40px 2px, 2px 40px, 2px 40px, 2px 40px, 2px 40px, 100% 100%;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 8px 8px rgba(225, 225, 225, 0.5);
+  /*border-radius: 3px;*/
+  left: -1014px;
+  top: 508px;
+  width: 298px;
+  height: 148px;
+  z-index: 51;
+  color: #86e7ff;
+  text-align: center;
+  letter-spacing: 2px;
+}
+/*industryChainTracing part*/
+#industryChainTracing .inSel {
+  text-align: right;
+  padding-left: 10px;
+}
+#industryChainTracing .modulebox2 {
+  position: absolute;
+  top: 943px;
+  width: 77%;
+  right: 10px;
+}
+#industryChainTracing .modulebox2 .module {
+  width: 100%;
+}
+#industryChainTracing .modulebox2 .module #chart2 {
+  height: 247px;
+}
+#industryChainTracing .module .moduleTit {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#industryChainTracing .simSelTime1 {
+  margin-right: 5px;
+}
+#industryChainTracing .moduleTit {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+#industryChainTracing .module1 {
+  top: 943px;
+}
+#industryChainTracing .module1 #chart1 {
+  height: 247px;
+}
+#industryChainTracing .module3 {
+  position: absolute;
+  top: 76px;
+}
+#industryChainTracing .module3 #chart3 {
+  height: 246px;
+}
+#industryChainTracing .module4 {
+  top: 364px;
+}
+#industryChainTracing .module4 #chart4 {
+  height: 246px;
+}
+#industryChainTracing .module5 {
+  top: 670px;
+  left: 10px;
+}
+#industryChainTracing .module5 #chart5 {
+  height: 208px;
+}
+#industryChainTracing .module6 {
+  position: absolute;
+  width: 77%;
+  top: 670px;
+  right: 10px;
+  z-index: 100;
+}
+#industryChainTracing .module6 .moduleCont {
+  padding: 5px;
+  padding-bottom: 0;
+}
+#industryChainTracing .module6 table {
+  width: 100%;
+}
+#industryChainTracing .module6 table th {
+  line-height: 28px;
+  width: 15%;
+  text-align: center;
+  border-top: 1px solid #02597e;
+  border-right: 1px solid #02597e;
+  color: #ffc000;
+}
+#industryChainTracing .module6 table .th40 {
+  width: 40%;
+}
+#industryChainTracing .module6 table td {
+  line-height: 29px;
+  width: 15%;
+  text-align: center;
+  border-top: 1px solid #02597e;
+  border-right: 1px solid #02597e;
+  color: #FFF;
+}
+#industryChainTracing .module6 table .td40 {
+  width: 40%;
+}
+#industryChainTracing .module6 table .noborderright {
+  border-right: none;
+}
+#industryChainTracing #map {
+  position: absolute;
+  width: 90%;
+  height: 600px;
+  z-index: 0;
+  border: none;
+  left: 0;
+  right: 0;
+  top: 60px;
+  bottom: 0;
+  box-shadow: none;
+}
+#industryChainTracing #map #map_popOver {
+  width: 120px;
+  height: 77px;
+  padding: 14px 7px 7px 12px;
+}
+#industryChainTracing #map #map_popOver .qidian {
+  color: #feee03;
+}
+#industryChainTracing #map #map_popOver .liujingdian {
+  color: #f3562b;
+}
+#industryChainTracing #map #map_popOver .zhongdian {
+  color: #55fc33;
+}
+#industryChainTracing #map #map_popOver h3 {
+  line-height: 36px;
+  font-size: 20px;
+  text-align: left;
+}
+#industryChainTracing #map #map_popOver p {
+  line-height: 20px;
+  font-size: 12px;
+  color: #90acc2;
+  float: none;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+}
+#orginTracing .contTit {
+  top: 79px;
+}
+#orginTracing .pageTit {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+}
+#orginTracing .pageTit h3 {
+  font-size: 18px;
+  color: #dba402;
+  line-height: 28px;
+}
+#orginTracing .pageTit p {
+  font-size: 14px;
+  color: #6d7884;
+  line-height: 20px;
+}
+#orginTracing .pageTit p i {
+  width: 20px;
+  height: 10px;
+  margin-left: 4px;
+  display: inline-block;
+}
+#orginTracing .inSel {
+  text-align: right;
+  padding-left: 10px;
+}
+#orginTracing .visualMap,
+#orginTracing .svisualMap {
+  line-height: 28px;
+  position: absolute;
+  cursor: pointer;
+}
+#orginTracing .visualMap {
+  top: 82px;
+  left: 40px;
+}
+#orginTracing .visualMap li {
+  padding: 10px 0 10px 50px;
+}
+#orginTracing .visualMap li.visualMap1 {
+  background: url("../images/gongchang.png") no-repeat;
+  background-position: 5px 9px;
+}
+#orginTracing .visualMap li.visualMap2 {
+  background: url("../images/rigtracing1_03.png") no-repeat 8px center;
+}
+#orginTracing .visualMap li.visualMap3 {
+  background: url("../images/huangse.png") no-repeat 10px center;
+}
+#orginTracing .visualMap li.visualMap4 {
+  background: url("../images/juxing.png") no-repeat 10px center;
+}
+#orginTracing .visualMap li.visualMap5 {
+  background: url("../images/huasheng.png") no-repeat 10px center;
+}
+#orginTracing .visualMap li.visualMap6 {
+  background: url("../images/shucai.png") no-repeat 10px center;
+}
+#orginTracing .visualMap li.visualMap7 {
+  background: url("../images/dasuan.png") no-repeat 10px center;
+}
+#orginTracing .visualMap li.visualMap8 {
+  background: url("../images/yumi.png") no-repeat 10px center;
+}
+#orginTracing .visualMap li.visualMap9 {
+  background: url("../images/xiaomai.png") no-repeat 10px center;
+}
+#orginTracing .visualMap li.visualMap10 {
+  background: url("../images/digua.png") no-repeat 10px center;
+}
+#orginTracing .visualMap li p {
+  width: 107px;
+  height: 30px;
+}
+#orginTracing .visualMap li p span {
+  margin-left: 10px;
+  color: #e4ab05;
+}
+#orginTracing .svisualMap {
+  top: 300px;
+  left: 40px;
+}
+#orginTracing .module .moduleTit {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#orginTracing .simSelTime1 {
+  margin-right: 5px;
+}
+#orginTracing #map {
+  position: absolute;
+  width: 579px;
+  height: 583px;
+  left: 50%;
+  margin-left: -290px;
+  top: 120px;
+  box-shadow: none;
+  border: none;
+}
+#orginTracing #map .clickbox1 {
+  width: 110px;
+  height: 120px;
+  left: 143px;
+  top: 60px;
+  position: absolute;
+  cursor: pointer;
+}
+#orginTracing #map .clickbox2 {
+  width: 120px;
+  height: 110px;
+  left: 284px;
+  top: 242px;
+  position: absolute;
+  cursor: pointer;
+}
+#orginTracing .module6 {
+  position: absolute;
+  width: 30%;
+  top: 98px;
+  right: 20px;
+  z-index: 100;
+}
+#orginTracing .module6 .moduleCont {
+  padding: 5px;
+  padding-bottom: 0;
+}
+#orginTracing .module6 table {
+  width: 100%;
+}
+#orginTracing .module6 table tr {
+  cursor: pointer;
+}
+#orginTracing .module6 table tr:hover td {
+  color: #a98328;
+}
+#orginTracing .module6 table tr th {
+  line-height: 28px;
+  width: 20%;
+  text-align: center;
+  border-top: 1px solid #02597e;
+  border-right: 1px solid #02597e;
+  color: #ffc000;
+}
+#orginTracing .module6 table tr td {
+  line-height: 28px;
+  width: 20%;
+  text-align: center;
+  border-top: 1px solid #02597e;
+  border-right: 1px solid #02597e;
+  color: #FFF;
+}
+#orginTracing .module6 table tr .noborderright {
+  border-right: none;
+}
+#orginTracing .show {
+  display: block;
+}
+#orginTracing .module7 {
+  display: none;
+  position: absolute;
+  top: 750px;
+  width: 98%;
+  left: 1%;
+}
+#orginTracing .module7 #jsmind_container img {
+  width: 100%;
+}
+#circulationTracing body {
+  height: 1000px;
+}
+#circulationTracing .inSel {
+  text-align: right;
+}
+#circulationTracing #map_popOver {
+  padding: 0 3px;
+}
+#circulationTracing #map_popOver h4 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+#circulationTracing .leftBar {
+  z-index: 100;
+}
+#circulationTracing .content {
+  margin: 0;
+  position: relative;
+  padding: 92px 20px 0 160px;
+}
+#circulationTracing .tab {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+#circulationTracing .tab .tabtitle {
+  height: 36px;
+  overflow: hidden;
+  width: 470px;
+}
+#circulationTracing .tab .tabtitle ul {
+  width: 100%;
+  height: 36px;
+  overflow: hidden;
+}
+#circulationTracing .tab .tabtitle ul li {
+  width: 48%;
+  line-height: 34px;
+  border: 1px solid #00b4ff;
+  border-radius: 5px;
+  background: #051b4d;
+  float: left;
+  font-size: 18px;
+  margin-right: 1%;
+  color: #037ecc;
+  text-align: center;
+  cursor: pointer;
+}
+#circulationTracing .tab .tabtitle ul li:hover {
+  background: #00d5ff;
+}
+#circulationTracing .tab .tabtitle ul li.active {
+  background: #00d5ff;
+}
+#circulationTracing .tab .tabcontent .tabcontentc {
+  display: none;
+}
+#circulationTracing .tab .tabcontent .tabcontentc1 {
+  display: block;
+  padding-top: 70px;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+#circulationTracing .tab .tabcontent .tabcontentc1 .visualMap {
+  left: 40px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc1 .visualMap li p {
+  width: 136px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc1 .visualMap li.visualMap1 {
+  height: 28px;
+  background: url(../images/visualMap.png) no-repeat left -30px;
+  padding: 7px 0 7px 38px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc1 .visualMap li.visualMap2 {
+  background: url("../images/zhuisuTabicon_07.png") no-repeat 7px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc1 .visualMap li.visualMap3 {
+  background: url("../images/huangse.png") no-repeat 5px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc1 .visualMap li.visualMap4 {
+  background: url("../images/yujingtupian_03.png") no-repeat 5px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc1 .visualMap li.visualMap5 {
+  background: url("../images/yujingtupian_06.png") no-repeat 5px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc1 .visualMap li.visualMap6 {
+  background: url("../images/yujingtupian_08.png") no-repeat 5px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc1 #tabcontent1map {
+  width: 100%;
+  height: 650px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 {
+  padding-top: 70px;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .visualMap li p {
+  width: 136px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .visualMap li.visualMap1 {
+  background: url("../images/lengku.png") no-repeat -3px 4px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .visualMap li.visualMap2 {
+  background: url("../images/juxing.png") no-repeat 7px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .visualMap li.visualMap3 {
+  background: url("../images/huasheng.png") no-repeat 10px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .visualMap li.visualMap4 {
+  background: url("../images/shucai.png") no-repeat 10px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .visualMap li.visualMap5 {
+  background: url("../images/dasuan.png") no-repeat 10px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .visualMap li.visualMap33 {
+  background: url("../images/yujingtupian_03.png") no-repeat 5px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .visualMap li.visualMap44 {
+  background: url("../images/yujingtupian_06.png") no-repeat 5px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .visualMap li.visualMap55 {
+  background: url("../images/yujingtupian_08.png") no-repeat 5px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .visualMap li.visualMap6 {
+  background: url("../images/yumi.png") no-repeat 10px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .visualMap li.visualMap7 {
+  background: url("../images/xiaomai.png") no-repeat 10px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .visualMap li.visualMap8 {
+  background: url("../images/digua.png") no-repeat 10px center;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .s1visualMap {
+  left: 40px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .s2visualMap {
+  top: 180px;
+  border-top: 1px solid #093069;
+  padding-top: 20px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .s2visualMap p {
+  width: 107px;
+  height: 30px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 .s2visualMap p span {
+  margin-left: 10px;
+  color: #e4ab05;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map {
+  width: 579px;
+  height: 583px;
+  margin: auto;
+  position: relative;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map .maptip {
+  box-sizing: border-box;
+  position: absolute;
+  padding: 23px;
+  background: linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), rgba(4, 53, 117, 0.9);
+  background-position: 14px 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%, center center;
+  background-size: 64px 2px, 25px 2px, 2px 25px, 25px 2px, 2px 25px, 25px 2px, 2px 25px, 100% 100%;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 20px #fff inset;
+  right: 0;
+  text-align: left;
+  max-width: 288px;
+  width: 280px;
+  z-index: 999;
+  opacity: 1;
+  display: none;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map .maptip p {
+  line-height: 22px;
+  color: #7ba4c4;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map .maptip p span {
+  color: #ffc100;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map .maptip p b {
+  color: #ec4938;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map .tooltipbox1 {
+  width: 104px;
+  height: 127px;
+  position: absolute;
+  left: 146px;
+  top: 49px;
+  cursor: pointer;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map .tooltipbox1 .maptip1 {
+  top: -100px;
+  left: -270px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map .tooltipbox1:hover .maptip1 {
+  display: block;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map .tooltipbox2 {
+  width: 122px;
+  height: 101px;
+  position: absolute;
+  left: 314px;
+  top: 236px;
+  cursor: pointer;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map .tooltipbox2 .maptip2 {
+  top: -132px;
+  left: 100px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map .tooltipbox2:hover .maptip2 {
+  display: block;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map .tooltipbox3 {
+  width: 70px;
+  height: 75px;
+  position: absolute;
+  left: 200px;
+  top: 414px;
+  cursor: pointer;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map .tooltipbox3 .maptip3 {
+  top: -130px;
+  left: -184px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc2 #tabcontent2map .tooltipbox3:hover .maptip3 {
+  display: block;
+}
+#circulationTracing .tab .tabcontent .tabcontentc3 {
+  display: block;
+  padding-top: 70px;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+#circulationTracing .tab .tabcontent .tabcontentc3 #map_popOver3 {
+  width: 350px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc3 #map_popOver3 p {
+  width: 25%;
+}
+#circulationTracing .tab .tabcontent .tabcontentc3 .visualMap li p {
+  width: 136px;
+}
+#circulationTracing .tab .tabcontent .tabcontentc3 #tabcontent3map {
+  width: 100%;
+  height: 600px;
+}
+#areaTracing .inSel {
+  text-align: right;
+}
+#areaTracing .pageTit {
+  position: absolute;
+  left: 0px;
+  top: 13px;
+}
+#areaTracing .pageTit h3 {
+  font-size: 18px;
+  color: #dba402;
+  line-height: 28px;
+}
+#areaTracing .pageTit p {
+  font-size: 14px;
+  color: #6d7884;
+  line-height: 20px;
+}
+#areaTracing .pageTit p i {
+  width: 20px;
+  height: 10px;
+  margin-left: 4px;
+  display: inline-block;
+}
+#areaTracing .module .moduleTit {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#areaTracing .simSelTime1 {
+  margin-right: 5px;
+}
+#areaTracing .moduleTit {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+#areaTracing .module1 {
+  position: absolute;
+  top: 670px;
+  right: 35%;
+  left: auto;
+  width: 30%;
+  z-index: 100;
+}
+#areaTracing .module2 {
+  position: absolute;
+  top: 670px;
+  right: 70%;
+  left: auto;
+  width: 30%;
+  z-index: 100;
+}
+#areaTracing .module2 .di,
+#areaTracing .module2 .gao,
+#areaTracing .module2 .nan,
+#areaTracing .module2 .yi,
+#areaTracing .module2 .fujiazhi,
+#areaTracing .module2 .nanyidu {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  color: #FFF;
+}
+#areaTracing .module2 .fujiazhi {
+  width: 60px;
+  height: 10px;
+  left: 30px;
+  top: 48%;
+  -webkit-text-size-adjust: none;
+  font-size: 10px;
+}
+#areaTracing .module2 .nanyidu {
+  left: 46%;
+  bottom: 33px;
+  height: 60px;
+  line-height: 14px;
+  width: 10px;
+  font-size: 10px;
+}
+#areaTracing .module2 .di {
+  left: 8px;
+  top: 51%;
+}
+#areaTracing .module2 .gao {
+  right: 0;
+  top: 51%;
+}
+#areaTracing .module2 .yi {
+  left: 49%;
+  bottom: 3px;
+}
+#areaTracing .module2 .nan {
+  left: 49%;
+  top: 31px;
+}
+#areaTracing .module3 {
+  position: absolute;
+  top: 76px;
+  z-index: 100;
+}
+#areaTracing .module4 {
+  position: absolute;
+  top: 316px;
+  z-index: 100;
+}
+#areaTracing .module5 {
+  position: absolute;
+  top: 670px;
+  width: 30%;
+  right: 10px;
+  z-index: 100;
+}
+#areaTracing .module6 {
+  position: absolute;
+  top: 600px;
+  z-index: 100;
+}
+#areaTracing #map {
+  position: absolute;
+  width: 90%;
+  height: 600px;
+  z-index: 0;
+  border: none;
+  left: 0;
+  right: 0;
+  top: 60px;
+  bottom: 0;
+  box-shadow: none;
+}
+#areaTracing #chart1 {
+  height: 210px;
+}
+#areaTracing #chart2 {
+  height: 150px;
+}
+#areaTracing #chart3 {
+  height: 170px;
+}
+#areaTracing #chart4 {
+  height: 170px;
+}
+#areaTracing #chart5 {
+  height: 210px;
+}
+#areaTracing #map_popOver {
+  padding: 0;
+}
+#detectionTracing .inSel {
+  text-align: right;
+  padding-left: 10px;
+}
+#detectionTracing .newvisualMap {
+  width: 110px;
+  overflow: hidden;
+  height: 100px;
+  position: absolute;
+  top: 82px;
+  left: 40px;
+}
+#detectionTracing .newvisualMap li {
+  color: #37a5f7;
+  line-height: 20px;
+}
+#detectionTracing .newvisualMap li i {
+  display: inline-block;
+  width: 20px;
+  height: 10px;
+  margin-right: 10px;
+}
+#detectionTracing .newvisualMap li i.color1 {
+  background: #003a78 ;
+}
+#detectionTracing .newvisualMap li i.color2 {
+  background: #0072eb;
+}
+#detectionTracing .newvisualMap li i.color3 {
+  background: #00edff;
+}
+#detectionTracing .module .moduleTit {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#detectionTracing .simSelTime1 {
+  margin-right: 5px;
+}
+#detectionTracing .moduleTit {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+#detectionTracing .module3 {
+  top: 176px;
+}
+#detectionTracing .module4 {
+  top: 376px;
+}
+#detectionTracing .module6 {
+  position: absolute;
+  width: 98%;
+  top: 700px;
+  left: 1%;
+  z-index: 100;
+}
+#detectionTracing .module6 .moduleCont {
+  padding: 5px;
+  padding-bottom: 0;
+}
+#detectionTracing .module6 table {
+  width: 100%;
+}
+#detectionTracing .module6 table tr {
+  cursor: pointer;
+}
+#detectionTracing .module6 table tr:hover td {
+  color: #a98328;
+}
+#detectionTracing .module6 table tr th {
+  line-height: 28px;
+  width: 12.2%;
+  text-align: center;
+  border-top: 1px solid #02597e;
+  border-right: 1px solid #02597e;
+  color: #ffc000;
+}
+#detectionTracing .module6 table tr td {
+  line-height: 28px;
+  width: 12.2%;
+  text-align: center;
+  border-top: 1px solid #02597e;
+  border-right: 1px solid #02597e;
+  color: #FFF;
+}
+#detectionTracing .module6 table tr .noborderright {
+  border-right: none;
+}
+#detectionTracing .module8 {
+  position: absolute;
+  display: none;
+  top: 920px;
+  width: 98%;
+  left: 1%;
+}
+#detectionTracing .module8 #jsmind_container img {
+  width: 100%;
+}
+#detectionTracing #map {
+  position: absolute;
+  width: 90%;
+  height: 600px;
+  z-index: 0;
+  border: none;
+  left: 0;
+  right: 0;
+  top: 100px;
+  bottom: 0;
+  box-shadow: none;
+}
+#detectionTracing #map .info {
+  color: yellow;
+}
+#detectionTracing #map #map_tooltip .cfff {
+  font-size: 20px;
+  color: #54fc33;
+}
+#detectionTracing #map #map_tooltip span {
+  color: #c1c3ce;
+  font-size: 12px;
+}
+#detectionTracing #chart3 {
+  height: 150px;
+}
+#detectionTracing #chart4 {
+  height: 150px;
+}
+#detectionTracing #map_popOver {
+  padding: 0;
+  width: 100px;
+  height: 47px;
+  line-height: 47px;
+}
+#detectionTracing .mapTit {
+  position: absolute;
+  width: 100%;
+  top: 88px;
+  left: 0;
+  text-align: center;
+  color: #8ac5e9;
+  font-size: 16px;
+  z-index: 10;
+}

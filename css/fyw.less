@@ -1,0 +1,1105 @@
+/*common part*/
+.border-bottom-0b2b6e {
+  border-bottom: 1px solid #0b2b6e;
+}
+.simSelHide li{
+  color: #FFF;
+}
+#mCSB_1_container li{
+  color: #FFF;
+}
+.text-red {
+  color: red;
+}
+
+.padding-bottom-14 {
+  padding-bottom: 14px;
+}
+
+.padding-17 {
+  padding: 0 20px;
+}
+
+.margin-right-20 {
+  margin-right: 20px;
+}
+
+.inSel {
+  width: 90%;
+}
+
+.headerR_l {
+  display: none;
+}
+
+.simSel {
+  span {
+    display: block;
+    text-align: center;
+  }
+  input {
+    text-indent: 10px;
+  }
+  ul {
+    li {
+      text-align: center;
+    }
+  }
+}
+
+#map_popOver2 {
+  box-sizing: border-box;
+  position: absolute;
+  padding: 0 34px 24px;
+  background: linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), rgba(4, 53, 117, .9);
+  background-position: 14px 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%, center center;
+  background-size: 64px 2px, 25px 2px, 2px 25px, 25px 2px, 2px 25px, 25px 2px, 2px 25px, 100% 100%;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 20px #fff inset;
+  right: 0;
+  text-align: center;
+  max-width: 288px;
+  z-index: 999;
+  opacity: 1;
+  display: none;
+}
+
+#map_popOver2 h4 {
+  color: #579dbf;
+  font: 18px/66px 'Microsoft Yahei';
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#map_popOver2 p {
+  float: left;
+  width: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+#map_popOver2 p:first-child {
+  margin-bottom: 24px;
+}
+
+#map_popOver2 span {
+  display: block;
+  color: #aab2c3;
+  font-size: 12px;
+}
+
+#map_popOver2 .import {
+  font-size: 24px;
+  color: #ff3b3b;
+  line-height: 30px;
+}
+
+#map_popOver2 .star {
+  line-height: 30px;
+  font-size: 16px;
+  color: #ffc000;
+}
+
+#map_popOver2 .pbiaoqian1 {
+  color: #aeefff;
+  font-size: 24px;
+  line-height: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+
+#map_popOver2 .pbiaoqian2 {
+  color: #ffc000;
+  font-size: 24px;
+  line-height: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+
+#map_popOver2 .pbiaoqian3 {
+  color: #54fc33;
+  font-size: 24px;
+  line-height: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+
+#map_popOver2 .pbiaoqian4 {
+  color: #39abff;
+  font-size: 24px;
+  line-height: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+
+.area_name {
+  font-size: 12px;
+  fill: #ccc;
+}
+
+.line1 {
+  stroke: #ff0;
+  stroke-width: 2;
+  stroke-dasharray: 5, 5;
+  stroke-dashoffset: 0;
+  fill: none;
+  animation: dash 5s linear infinite;
+}
+
+.area_name {
+  font-size: 12px;
+  fill: #ccc;
+}
+
+.line1:hover {
+  stroke-dasharray: 0;
+}
+
+.line1.line-hover {
+  stroke-dasharray: 0;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+
+.map-tooltip2 {
+  position: absolute;
+  background-image: linear-gradient(90deg, #fff600, #fff600), linear-gradient(90deg, #fff600, #fff600), linear-gradient(90deg, #fff600, #fff600), linear-gradient(90deg, #fff600, #fff600), linear-gradient(0deg, #fff600, #fff600), linear-gradient(0deg, #fff600, #fff600), linear-gradient(0deg, #fff600, #fff600), linear-gradient(0deg, #fff600, #fff600), linear-gradient(90deg, rgba(6, 12, 34, 0.50196) 0%, rgba(0, 54, 255, 0.12157) 100%);
+  background-position: top left, top right, bottom left, bottom right, top left, top right, bottom left, bottom right;
+  background-size: 40px 2px, 40px 2px, 40px 2px, 40px 2px, 2px 40px, 2px 40px, 2px 40px, 2px 40px, 100% 100%;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 8px 8px rgba(225, 225, 225, 0.5);
+  /*border-radius: 3px;*/
+  left: -1014px;
+  top: 508px;
+  width: 298px;
+  height: 148px;
+  z-index: 51;
+  color: #86e7ff;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+/*industryChainTracing part*/
+#industryChainTracing {
+  .inSel {
+    text-align: right;
+    padding-left: 10px;
+  }
+  .modulebox2 {
+    position: absolute;
+    top: 943px;
+    width: 77%;
+    right: 10px;
+    .module {
+      width: 100%;
+      #chart2 {
+        height: 247px;
+      }
+    }
+
+  }
+  .module {
+    .moduleTit {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .simSelTime1 {
+    margin-right: 5px;
+  }
+
+  .moduleTit {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .module1 {
+    top: 943px;
+    #chart1 {
+      height: 247px;
+    }
+  }
+
+  .module3 {
+    position: absolute;
+    top: 76px;
+    #chart3 {
+      height: 246px;
+    }
+  }
+  .module4 {
+    top: 364px;
+    #chart4 {
+      height: 246px;
+    }
+  }
+  .module5 {
+    top: 670px;
+    left: 10px;
+    #chart5 {
+      height: 208px;
+    }
+  }
+  .module6 {
+    position: absolute;
+    width: 77%;
+    top: 670px;
+    right: 10px;
+    z-index: 100;
+  }
+  .module6 {
+    .moduleCont {
+      padding: 5px;
+      padding-bottom: 0;
+    }
+    table {
+      width: 100%;
+      th {
+        line-height: 28px;
+        width: 15%;
+        text-align: center;
+        border-top: 1px solid #02597e;
+        border-right: 1px solid #02597e;
+        color: #ffc000;
+      }
+      .th40 {
+        width: 40%
+      }
+      td {
+        line-height: 29px;
+        width: 15%;
+        text-align: center;
+        border-top: 1px solid #02597e;
+        border-right: 1px solid #02597e;
+        color: #FFF;
+      }
+      .td40 {
+        width: 40%
+      }
+      .noborderright {
+        border-right: none;
+      }
+    }
+  }
+
+  #map {
+    position: absolute;
+    width: 90%;
+    height: 600px;
+    z-index: 0;
+    border: none;
+    left: 0;
+    right: 0;
+    top: 60px;
+    bottom: 0;
+    box-shadow: none;
+    #map_popOver {
+      width: 120px;
+      height: 77px;
+      padding: 14px 7px 7px 12px;
+      .qidian {
+        color: #feee03;
+      }
+      .liujingdian {
+        color: #f3562b;
+      }
+      .zhongdian {
+        color: #55fc33;
+      }
+      h3 {
+        line-height: 36px;
+        font-size: 20px;
+        text-align: left;
+      }
+      p {
+        line-height: 20px;
+        font-size: 12px;
+        color: #90acc2;
+        float: none;
+        margin: 0;
+        width: 100%;
+        text-align: left;
+      }
+    }
+
+  }
+}
+
+#orginTracing {
+  .contTit {
+    top: 79px;
+  }
+  .pageTit {
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    h3 {
+      font-size: 18px;
+      color: #dba402;
+      line-height: 28px;
+    }
+    p {
+      font-size: 14px;
+      color: #6d7884;
+      line-height: 20px;
+      i {
+        width: 20px;
+        height: 10px;
+        margin-left: 4px;
+        display: inline-block;
+      }
+    }
+  }
+  .inSel {
+    text-align: right;
+    padding-left: 10px;
+  }
+  .visualMap, .svisualMap {
+    line-height: 28px;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  .visualMap {
+    top: 82px;
+    left: 40px;
+    li {
+      padding: 10px 0 10px 50px;
+      &.visualMap1 {
+        background: url("../images/gongchang.png") no-repeat;
+        background-position: 5px 9px;
+      }
+      &.visualMap2 {
+        background: url("../images/rigtracing1_03.png") no-repeat 8px center;
+      }
+      &.visualMap3 {
+        background: url("../images/huangse.png") no-repeat 10px center;
+      }
+      &.visualMap4 {
+        background: url("../images/juxing.png") no-repeat 10px center;
+      }
+      &.visualMap5 {
+        background: url("../images/huasheng.png") no-repeat 10px center;
+      }
+      &.visualMap6 {
+        background: url("../images/shucai.png") no-repeat 10px center;
+      }
+      &.visualMap7 {
+        background: url("../images/dasuan.png") no-repeat 10px center;
+      }
+      &.visualMap8 {
+        background: url("../images/yumi.png") no-repeat 10px center;
+      }
+      &.visualMap9 {
+        background: url("../images/xiaomai.png") no-repeat 10px center;
+      }
+      &.visualMap10 {
+        background: url("../images/digua.png") no-repeat 10px center;
+      }
+
+      p {
+        width: 107px;
+        height: 30px;
+        span {
+          margin-left: 10px;
+          color: #e4ab05;
+        }
+      }
+    }
+  }
+  .svisualMap {
+    top: 300px;
+    left: 40px;
+  }
+  .module {
+    .moduleTit {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .simSelTime1 {
+    margin-right: 5px;
+  }
+  #map {
+    position: absolute;
+    width: 579px;
+    height: 583px;
+    left: 50%;
+    margin-left: -290px;
+    top: 120px;
+    box-shadow: none;
+    border: none;
+    .clickbox1 {
+      width: 110px;
+      height: 120px;
+      left: 143px;
+      top: 60px;
+      position: absolute;
+      cursor: pointer;
+    }
+    .clickbox2 {
+      width: 120px;
+      height: 110px;
+      left: 284px;
+      top: 242px;
+      position: absolute;
+      cursor: pointer;
+    }
+
+  }
+  .module6 {
+    position: absolute;
+    width: 30%;
+    top: 98px;
+    right: 20px;
+    z-index: 100;
+    .moduleCont {
+      padding: 5px;
+      padding-bottom: 0;
+    }
+    table {
+      width: 100%;
+      tr {
+        cursor: pointer;
+        &:hover td {
+          color: #a98328;
+        }
+        th {
+          line-height: 28px;
+          width: 20%;
+          text-align: center;
+          border-top: 1px solid #02597e;
+          border-right: 1px solid #02597e;
+          color: #ffc000;
+        }
+        td {
+          line-height: 28px;
+          width: 20%;
+          text-align: center;
+          border-top: 1px solid #02597e;
+          border-right: 1px solid #02597e;
+          color: #FFF;
+        }
+        .noborderright {
+          border-right: none;
+        }
+      }
+    }
+
+  }
+;
+
+  .show {
+    display: block;
+  }
+  .module7 {
+    display: none;
+    position: absolute;
+    top: 750px;
+    width: 98%;
+    left: 1%;
+    #jsmind_container {
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+}
+
+#circulationTracing {
+  body{height: 1000px;}
+  .inSel {
+    text-align: right;
+  }
+  #map_popOver {
+    padding: 0 3px;
+    h4 {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+  .leftBar {
+    z-index: 100;
+  }
+  .content {
+    margin: 0;
+    position: relative;
+    padding: 92px 20px 0 160px;
+  }
+  .tab {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    .tabtitle {
+      height: 36px;
+      overflow: hidden;
+      width: 470px;
+      ul {
+        width: 100%;
+        height: 36px;
+        overflow: hidden;
+        li {
+          width: 48%;
+          line-height: 34px;
+          border-radius: 5px;
+          border: 1px solid #00b4ff;
+          border-radius: 5px;
+          background: #051b4d;
+          float: left;
+          font-size: 18px;
+          margin-right: 1%;
+          color: #037ecc;
+          text-align: center;
+          cursor: pointer;
+          &:hover {
+            background: #00d5ff;
+          }
+          &.active {
+            background: #00d5ff;
+          }
+        }
+      }
+    }
+    .tabcontent {
+      .tabcontentc {
+        display: none;
+      }
+      .tabcontentc1 {
+        display: block;
+        padding-top: 70px;
+        width: 100%;
+        height: auto;
+        position: relative;
+        .visualMap {
+          left: 40px;
+          li {
+            p {
+              width: 136px;
+            }
+            &.visualMap1 {
+              height: 28px;
+              background: url(../images/visualMap.png) no-repeat left -30px;
+              padding: 7px 0 7px 38px;
+            }
+            &.visualMap2 {
+              background: url("../images/zhuisuTabicon_07.png") no-repeat 7px center;
+            }
+            &.visualMap3 {
+              background: url("../images/huangse.png") no-repeat 5px center;
+            }
+            &.visualMap4 {
+              background: url("../images/yujingtupian_03.png") no-repeat 5px center;
+            }
+            &.visualMap5 {
+              background: url("../images/yujingtupian_06.png") no-repeat 5px center;
+            }
+            &.visualMap6 {
+              background: url("../images/yujingtupian_08.png") no-repeat 5px center;
+            }
+          }
+
+        }
+        #tabcontent1map {
+          width: 100%;
+          height: 650px;
+        }
+      }
+      .tabcontentc2 {
+        padding-top: 70px;
+        width: 100%;
+        height: auto;
+        position: relative;
+        .visualMap {
+
+          li {
+            p {
+              width: 136px;
+            }
+            &.visualMap1 {
+              background: url("../images/lengku.png") no-repeat -3px 4px;
+            }
+            &.visualMap2 {
+              background: url("../images/juxing.png") no-repeat 7px center;
+
+            }
+            &.visualMap3 {
+              background: url("../images/huasheng.png") no-repeat 10px center;
+            }
+            &.visualMap4 {
+              background: url("../images/shucai.png") no-repeat 10px center;
+            }
+            &.visualMap5 {
+              background: url("../images/dasuan.png") no-repeat 10px center;
+            }
+            &.visualMap33 {
+              background: url("../images/yujingtupian_03.png") no-repeat 5px center;
+            }
+            &.visualMap44 {
+              background: url("../images/yujingtupian_06.png") no-repeat 5px center;
+            }
+            &.visualMap55 {
+              background: url("../images/yujingtupian_08.png") no-repeat 5px center;
+            }
+            &.visualMap6 {
+              background: url("../images/yumi.png") no-repeat 10px center;
+            }
+            &.visualMap7 {
+              background: url("../images/xiaomai.png") no-repeat 10px center;
+            }
+            &.visualMap8 {
+              background: url("../images/digua.png") no-repeat 10px center;
+            }
+          }
+
+        }
+        .s1visualMap {
+          left: 40px;
+        }
+        .s2visualMap {
+          top: 180px;
+          border-top: 1px solid #093069;
+          padding-top: 20px;
+          p {
+            width: 107px;
+            height: 30px;
+            span {
+              margin-left: 10px;
+              color: #e4ab05;
+            }
+          }
+        }
+        #tabcontent2map {
+          width: 579px;
+          height: 583px;
+          margin: auto;
+          position: relative;
+          .maptip {
+            box-sizing: border-box;
+            position: absolute;
+            padding: 23px;
+            background: linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), linear-gradient(#fff600, #fff600), rgba(4, 53, 117, 0.9);
+            background-position: 14px 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%, center center;
+            background-size: 64px 2px, 25px 2px, 2px 25px, 25px 2px, 2px 25px, 25px 2px, 2px 25px, 100% 100%;
+            background-repeat: no-repeat;
+            box-shadow: 0 0 20px #fff inset;
+            right: 0;
+            text-align: left;
+            max-width: 288px;
+            width: 280px;
+            z-index: 999;
+            opacity: 1;
+            display: none;
+            p {
+              line-height: 22px;
+              color: #7ba4c4;
+              span {
+                color: #ffc100;
+              }
+              b {
+                color: #ec4938;
+              }
+            }
+          }
+          .tooltipbox1 {
+            width: 104px;
+            height: 127px;
+            position: absolute;
+            left: 146px;
+            top: 49px;
+            cursor: pointer;
+            .maptip1 {
+              top: -100px;
+              left: -270px;
+            }
+            &:hover .maptip1 {
+              display: block;
+            }
+          }
+          .tooltipbox2 {
+            width: 122px;
+            height: 101px;
+            position: absolute;
+            left: 314px;
+            top: 236px;
+            cursor: pointer;
+            .maptip2 {
+              top: -132px;
+              left: 100px;
+            }
+            &:hover .maptip2 {
+              display: block;
+            }
+          }
+          .tooltipbox3 {
+            width: 70px;
+            height: 75px;
+            position: absolute;
+            left: 200px;
+            top: 414px;
+            cursor: pointer;
+            .maptip3 {
+              top: -130px;
+              left: -184px;
+            }
+            &:hover .maptip3 {
+              display: block;
+            }
+          }
+        }
+      }
+      .tabcontentc3 {
+        #map_popOver3 {
+          width: 350px;
+        }
+        #map_popOver3 p {
+          width: 25%;
+        }
+        display: block;
+        padding-top: 70px;
+        width: 100%;
+        height: auto;
+        position: relative;
+        .visualMap {
+          li {
+            p {
+              width: 136px;
+            }
+
+          }
+
+        }
+        #tabcontent3map {
+          width: 100%;
+          height: 600px;
+        }
+      }
+
+    }
+  }
+}
+
+#areaTracing {
+  .inSel {
+    text-align: right;
+  }
+  .pageTit {
+    position: absolute;
+    left: 0px;
+    top: 13px;
+    h3 {
+      font-size: 18px;
+      color: #dba402;
+      line-height: 28px;
+    }
+    p {
+      font-size: 14px;
+      color: #6d7884;
+      line-height: 20px;
+      i {
+        width: 20px;
+        height: 10px;
+        margin-left: 4px;
+        display: inline-block;
+      }
+    }
+  }
+  .module {
+    .moduleTit {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .simSelTime1 {
+    margin-right: 5px;
+  }
+  .moduleTit {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .module1 {
+    position: absolute;
+    top: 670px;
+    right: 35%;
+    left: auto;
+    width: 30%;
+    z-index: 100;
+  }
+  .module2 {
+    position: absolute;
+    top: 670px;
+    right: 70%;
+    left: auto;
+    width: 30%;
+    z-index: 100;
+    .di,.gao,.nan,.yi,.fujiazhi,.nanyidu{
+      display: block;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      color: #FFF;
+    }
+    .fujiazhi{
+       width: 60px;
+      height: 10px;
+      left: 30px;
+      top: 48%;
+      -webkit-text-size-adjust:none;
+      font-size:10px;
+    }
+    .nanyidu{
+      left: 46%;
+      bottom: 33px;
+      height: 60px;
+      line-height: 14px;
+      width: 10px;
+      font-size: 10px;
+    }
+    .di{
+
+      left: 8px;
+      top: 51%;
+    }
+    .gao{
+      right: 0;
+      top: 51%;
+    }
+    .yi{
+      left: 49%;
+      bottom: 3px;
+    }
+    .nan{
+      left: 49%;
+      top: 31px;
+
+    }
+  }
+  .module3 {
+    position: absolute;
+    top: 76px;
+    z-index: 100;
+  }
+  .module4 {
+    position: absolute;
+    top: 316px;
+    z-index: 100;
+  }
+  .module5 {
+    position: absolute;
+    top: 670px;
+    width: 30%;
+    right: 10px;
+    z-index: 100;
+  }
+  .module6 {
+    position: absolute;
+    top: 600px;
+    z-index: 100;
+  }
+
+  #map {
+    position: absolute;
+    width: 90%;
+    height: 600px;
+    z-index: 0;
+    border: none;
+    left: 0;
+    right: 0;
+    top: 60px;
+    bottom: 0;
+    box-shadow: none;
+
+  }
+  #chart1 {
+    height: 210px;
+  }
+  #chart2 {
+    height: 150px;
+  }
+  #chart3 {
+    height: 170px;
+  }
+  #chart4 {
+    height: 170px;
+  }
+  #chart5 {
+    height: 210px;
+  }
+  #map_popOver {
+    padding: 0;
+  }
+}
+
+#detectionTracing {
+
+  .inSel {
+    text-align: right;
+    padding-left: 10px;
+  }
+  .newvisualMap {
+    width: 110px;
+    overflow: hidden;
+    height: 100px;
+    position: absolute;
+    top: 82px;
+    left: 40px;
+    li {
+      color: #37a5f7;
+      line-height: 20px;
+      i {
+        display: inline-block;
+        width: 20px;
+        height: 10px;
+        margin-right: 10px;
+          &.color1{
+          background:#003a78 ;
+        }
+        &.color2{
+          background: #0072eb;
+        }
+        &.color3{
+          background: #00edff;
+        }
+
+      }
+
+    }
+  }
+  .module {
+    .moduleTit {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .simSelTime1 {
+    margin-right: 5px;
+  }
+
+  .moduleTit {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .module3 {
+    top: 176px;
+  }
+  .module4 {
+    top: 376px;
+  }
+  .module6 {
+    position: absolute;
+    width: 98%;
+    top: 700px;
+    left: 1%;
+    z-index: 100;
+    .moduleCont {
+      padding: 5px;
+      padding-bottom: 0;
+    }
+    table {
+      width: 100%;
+      tr {
+        cursor: pointer;
+        &:hover td {
+          color: #a98328;
+        }
+        th {
+          line-height: 28px;
+          width: 12.2%;
+          text-align: center;
+          border-top: 1px solid #02597e;
+          border-right: 1px solid #02597e;
+          color: #ffc000;
+        }
+        td {
+          line-height: 28px;
+          width: 12.2%;
+          text-align: center;
+          border-top: 1px solid #02597e;
+          border-right: 1px solid #02597e;
+          color: #FFF;
+        }
+        .noborderright {
+          border-right: none;
+        }
+      }
+    }
+  }
+  .module8 {
+    position: absolute;
+    display: none;
+    top: 920px;
+    width: 98%;
+    left: 1%;
+    #jsmind_container {
+      img {
+        width: 100%;
+      }
+    }
+  }
+  #map {
+    position: absolute;
+    width: 90%;
+    height: 600px;
+    z-index: 0;
+    border: none;
+    left: 0;
+    right: 0;
+    top: 100px;
+    bottom: 0;
+    box-shadow: none;
+    .info{
+      color: yellow;
+    }
+    #map_tooltip {
+      .cfff {
+        font-size: 20px;
+        color: #54fc33;
+      }
+      span {
+        color: #c1c3ce;
+        font-size: 12px;
+      }
+    }
+
+  }
+
+  #chart3 {
+    height: 150px;
+  }
+  #chart4 {
+    height: 150px;
+  }
+  #map_popOver {
+    padding: 0;
+    width: 100px;
+    height: 47px;
+    line-height: 47px;
+  }
+  .mapTit {
+    position: absolute;
+    width: 100%;
+    top: 88px;
+    left: 0;
+    text-align: center;
+    color: #8ac5e9;
+    font-size: 16px;
+    z-index: 10;
+  }
+}

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>农业监测预警大数据平台</title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/warning.css">
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script src="../layui/lay/dest/layui.all.js"></script>
+</head>
+<body>
+<div class="header">
+    <h1><a href="###" class="logo"><img id="headerImg" src="../images/headLogo.png"></a></h1>
+    <div class="headerR">
+        <div class="headerR_r">
+            <a href="navigation.html">返回导航页</a>
+        </div>
+        <!--<ul class="headerR_l">
+            <li class="headerR_lTime">
+                <p>2016/11/11 星期五</p>
+                <p class="headerR_lTimeDay"><span>七天预报</span></p>
+            </li>
+            <li>
+                <p>晴</p>
+                <p><i class="iconfont icon-zhaoshenbian02"></i></p>
+            </li>
+            <li>
+                <p>4-7</p>
+                <p>℃</p>
+            </li>
+            <li>
+                <p>94</p>
+                <p>AQI</p>
+            </li>
+            <li>
+                <p>61</p>
+                <p><i class="iconfont icon-shape6"></i></p>
+            </li>
+            <li>
+                <p>2级</p>
+                <p><i class="iconfont icon-changhongchuifeng"></i></p>
+            </li>
+        </ul>-->
+    </div>
+</div>
+
+<div class="leftBar" style="position: absolute;">
+    <ul>
+        <li style="padding-top: 5px;" onclick="argiObj.link('index.html')">
+            <i class="iconfont icon-zhuye"></i>
+            <p>监测预警一张图</p>
+        </li>
+        <li onclick="argiObj.link('quality.html')">
+            <i class="iconfont icon-anquan"></i>
+            <p>农产品质量安全</p>
+        </li>
+        <li onclick="argiObj.link('price.html')">
+            <i class="iconfont icon-jiage"></i>
+            <p>农产品价格</p>
+        </li>
+        <li onclick="argiObj.link('sadBalance.html')">
+            <i class="iconfont icon-fuzaijunheng"></i>
+            <p>农产品供需平衡</p>
+        </li>
+        <li onclick="argiObj.link('meteorological.html')">
+            <i class="iconfont icon-qixiangchaxun"></i>
+            <p>农业气象</p>
+        </li>
+        <!-- <li>
+            <i class="iconfont icon-piaochong"></i>
+            <p>农业病虫害</p>
+        </li>
+        <li>
+            <i class="iconfont icon-gangcaiyunfeibutie"></i>
+            <p>农业补贴</p>
+        </li>
+        <li onclick="window.open('http://nongye.9cfcf.com/jsp/login_new.jsp')">
+            <i class="iconfont icon-14"></i>
+            <p>网络舆情</p>
+        </li> -->
+    </ul>
+</div>
+<script>
+    $(function(){
+        var localUrl = window.location + '';
+        var spIndex;
+        if (localUrl.indexOf('/index.html') >= 0) { //监测预警一张图
+            spIndex = 0;
+        } else if (localUrl.indexOf('/quality.html') >= 0) { //农产品质量安全
+            spIndex = 1;
+        } else if (localUrl.indexOf('/price.html') >= 0) { //产品价格
+            spIndex = 2;
+        } else if (localUrl.indexOf('/sadBalance.html') >= 0) { //产品供需平衡
+            spIndex = 3;
+        } else if (localUrl.indexOf('/meteorological.html') >= 0) { //农业气象
+            spIndex = 4;
+        }
+        $(".leftBar ul li").eq(spIndex).addClass("active").siblings().removeClass("active");
+    })
+</script>
+
+<div class="content">
+    <div class="contMap">
+        <div id="map" class="contMapNr"></div>
+        <div class="visualMap_2" style="bottom:40px;">
+            <p>检测次数</p>
+            <dl>
+                <dt>0</dt>
+                <dd></dd>
+                <dt>30</dt>
+            </dl>
+        </div>
+    </div>
+
+    <div class="introductionText">
+        山东省无公害基地总面积：<span class="orange"><strong>170</strong></span>万亩
+        产销对接基地面积：<span class="orange"><strong>12</strong></span>万亩
+        基地占全省耕地面积比例：<span class="orange"><strong>1.87%</strong></span>
+    </div>
+
+    <div class="contTit1">农产品质量安全检测检验</div>
+
+    <div class="inSel1">
+        时间：
+        <div class="simSel simSelTime"><input id="DatePicker1" onclick="WdatePicker({el:'DatePicker1',highLineWeekDay:false,onpicking:selectTime,dateFmt:'yyyy-MM-dd',qsEnabled:false,autoShowQS:false,isShowClear:false,isShowToday:false})" type="text" class="p_myDatePicker" value="2016-12-13" readonly/><i></i></div>
+        地区：
+        <div class="simSel mr20">
+            <span>全国</span><i></i>
+            <ul class="simSelHide">
+                <li class="mapChina">全国</li>
+                <li class="mapShandong">山东</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="module qlmodule1">
+        <div class="moduleTit">质量安全检测按检测品种分布</div>
+        <div class="moduleCont">
+            <div id="qlmodule1Cont" class="qlmodule1Cont"></div>
+        </div>
+    </div>
+
+    <div class="module qlmodule2">
+        <div class="moduleTit">质量安全检测按检测对象分布</div>
+        <div class="moduleCont">
+            <div id="qlmodule2Cont" class="qlmodule2Cont"></div>
+        </div>
+    </div>
+
+    <div class="module qlmodule3">
+        <div class="moduleTit">质量安全综合指数</div>
+        <div class="moduleCont">
+            <div class="qlmodule3Cont d3-dashboard"></div>
+        </div>
+    </div>
+
+    <div class="module qlmodule4">
+        <div class="moduleTit">
+            质量安全合格率
+            <div class="moduleTitMore">
+                <span>蔬菜</span><i></i>
+                <ul class="simSelHide" id="qualityPass">
+                    <li>蔬菜</li>
+                    <li>粮油</li>
+                </ul>
+            </div>
+        </div>
+        <div class="moduleCont">
+            <div id="qlmodule4Cont" class="qlmodule4Cont"></div>
+        </div>
+    </div>
+
+    <div class="module qlmodule5">
+        <div class="moduleTit">农产品“三品一标”</div>
+        <div class="moduleCont">
+            <div id="qlmodule5Cont" class="qlmodule5Cont"></div>
+        </div>
+    </div>
+
+</div>
+
+<script src="../js/WdatePicker.js"></script>
+<script src="../js/echarts-all-3.js"></script>
+<script src="../js/echarts-engine.js"></script>
+<script src="../js/d3.v4.min.js"></script>
+<script src="../js/commonLibMap.min.js"></script>
+<script src="../js/d3.min.js"></script>
+<script src="../js/d3-charts.min.js"></script>
+<script>
+var jccs = {};
+
+function randomData() {
+    return Math.round(Math.random()*20);
+}
+
+$(function(){
+    /*var winH = $(window).height();
+    if(winH <= 760){
+        $(".contMap").height(480);
+    }else{
+        $(".contMap").height(winH - 280);
+    }*/
+    refurbishChart("2016-12");
+});
+function selectTime(dp){
+    var dateStr = dp.cal.getNewDateStr();
+    refurbishChart(dateStr);
+    // console.log(dateStr)
+}
+function refurbishChart(arg){
+    var forDate = arg;
+    mapChina();
+    // var qlmodule1Cont = charts.init({id:840,container:"qlmodule1Cont",option:{}});
+    // var qlmodule2Cont = charts.init({id:841,container:"qlmodule2Cont",option:{}});
+    // var qlmodule4Cont = charts.init({id:842,container:"qlmodule4Cont",option:{}});
+    // var qlmodule5Cont = charts.init({id:843,container:"qlmodule5Cont",option:{}});
+
+    // 质量安全合格率 农业——蔬菜
+    var qlmodule4Cont_shucai_series_12 =  [{name: '当年', data: [90, 89, 94, 85, 98, 99, 91, 86, 90, 92, 94, 96   ] }, {name: '上一年', data: [87, 84, 87, 96, 87, 87, 89, 87, 99, 90, 87, 89] } ];
+    // 质量安全合格率 农业——粮油
+    var qlmodule4Cont_liangyou_series_12 =  [{name: '当年', data: [90, 90, 99, 100, 90, 90, 93, 90, 90, 90, 90, 90] }, {name: '上一年', data: [87, 84, 96, 97, 87, 90, 89, 87, 99, 90, 87, 89] } ];
+    // 质量安全合格率 农业——水产品
+    var qlmodule4Cont_shuichanpin_series_12 =  [{name: '当年', data: [89, 89, 89, 80, 75, 90, 94, 85, 86, 89, 95, 90
+    ] }, {name: '上一年', data: [86, 84, 86, 89, 72, 87, 89, 82, 99, 90, 92, 89] } ];
+    // 质量安全合格率 农业——果品
+    var qlmodule4Cont_guopin_series_12 =  [{name: '当年', data: [95, 95, 82, 95, 95, 87, 95, 90, 90, 99, 94, 94
+    ] }, {name: '上一年', data: [92, 84, 79, 92, 92, 85, 89, 87, 99, 90, 91, 8] } ];
+    // 质量安全合格率 农业——畜禽
+    var qlmodule4Cont_xuqin_series_12 =  [{name: '当年', data: [98, 85, 96, 95, 100, 98, 95, 90, 90, 95, 90, 88
+    ] }, {name: '上一年', data: [95, 84, 93, 92, 97, 95, 89, 87, 99, 90, 87, 89] } ];
+
+    // 质量安全检测按检测品种分布
+    var qlmodule1Cont_series_12 = [{data:[{value:60, name:'粮油', }, {value:50, name:'果品', }, {value:40, name:'畜禽', }, {value:80, name:'水产品', }, {value:170, name:'蔬菜', } ] } ];
+    // 质量安全检测按检测对象分布
+    var qlmodule2Cont_series_12 = [{name: '蔬菜', data:[9, 26, 46, 90] }, {name: '果品', data:[6, 8, 21, 16] }, {name: '粮油', data:[8, 8, 33, 11] }, {name: '水产品', data:[6, 12, 24, 38] }, {name: '畜禽', data:[0, 5, 8, 27] }, ];
+    // 农产品“三品一标”
+    var qlmodule5Cont_series_12 = [{data:[{value:0.25, name:'绿色食品' },{value:0.35, name:'无公害\n农产品'},   {value:0.2, name:'有机\n农产品' },{value:0.2, name:'农产品\n地理标志' } ] } ];
+
+
+    if (forDate.indexOf("2016-12") >= 0) {
+        qlmodule1Cont = charts.init({id:840,container:"qlmodule1Cont",option:{series: qlmodule1Cont_series_12}});
+        qlmodule2Cont = charts.init({id:841,container:"qlmodule2Cont",option:{series: qlmodule2Cont_series_12}});
+        qlmodule5Cont = charts.init({id:843,container:"qlmodule5Cont",option:{series: qlmodule5Cont_series_12}});
+        qlmodule4Cont = charts.init({id:842,container:"qlmodule4Cont",option:{series: qlmodule4Cont_shucai_series_12}});
+
+        var dashboard = d3Charts.chart()
+                // 背景设置
+                .width('100%')
+                .height(110)
+                .backgroundColor('none')
+                // 中心数值文字设置
+                .centerTextValue(92)
+                .centerTextValueColor('yellow')
+                .centerTextValueFontSize(40)
+                .centerArrowLineX1(75)
+                .centerArrowLineX2(75)
+                // 中心箭头线设置
+                // 中心文本文字设置
+                .centerTextTitle('优')
+            .centerTextTitleColor('yellow')
+                .centerTextTitleFontSize(30)
+                // 内轨轨道设置
+                .orbitColorIn('#ccc')
+                .scaleColor('#4b6692');
+        $(".d3-dashboard").children("svg").remove();
+        d3.select('.d3-dashboard').call(dashboard);
+
+        jccs = {
+            '济南市':10,
+            '青岛市':11,
+            '淄博市':6,
+            '枣庄市':8,
+            '东营市':9,
+            '烟台市':12,
+            '潍坊市':6,
+            '济宁市':8,
+            '泰安市':9,
+            '威海市':12,
+            '日照市':11,
+            '莱芜市':9,
+            '临沂市':12,
+            '德州市':12,
+            '聊城市':13,
+            '滨州市':15,
+            '菏泽市':9
+        };
+
+    } else {
+        var qlmodule1Cont = charts.init({id:840,container:"qlmodule1Cont",option:{}});
+        var qlmodule2Cont = charts.init({id:841,container:"qlmodule2Cont",option:{}});
+        var qlmodule4Cont = charts.init({id:842,container:"qlmodule4Cont",option:{}});
+        var qlmodule5Cont = charts.init({id:843,container:"qlmodule5Cont",option:{}});
+
+        if($('.d3-dashboard svg').length>0){
+            $('.d3-dashboard svg').remove();
+        }
+        var opt = {value:Math.round(Math.random())+90} ;
+        if(opt.value>=80){
+            opt.valueColor = '#ff4504';
+            opt.title = '差';
+        }else if(opt.value>=60){
+            opt.valueColor = '#FFC000';
+            opt.title = '良';
+        }else{
+            opt.valueColor = '#4ad538';
+            opt.title = '优';
+        }
+        var dashboard = d3Charts.chart()
+                // 背景设置
+                .width('100%')
+                .height(110)
+                .backgroundColor('none')
+                // 中心数值文字设置
+                .centerTextValue(opt.value)
+                .centerTextValueColor('yellow')
+                .centerTextValueFontSize(40)
+                .centerArrowLineX1(75)
+                .centerArrowLineX2(75)
+                // 中心箭头线设置
+                // 中心文本文字设置
+                .centerTextTitle(opt.title)
+                .centerTextTitleColor('yellow')
+                .centerTextTitleFontSize(30)
+                // 内轨轨道设置
+                .orbitColorIn('#ccc')
+                .scaleColor('#4b6692');
+        $(".d3-dashboard").children("svg").remove();
+        d3.select('.d3-dashboard').call(dashboard);
+
+        jccs = {
+            '济南市':randomData(),
+            '青岛市':randomData(),
+            '淄博市':randomData(),
+            '枣庄市':randomData(),
+            '东营市':randomData(),
+            '烟台市':randomData(),
+            '潍坊市':randomData(),
+            '济宁市':randomData(),
+            '泰安市':randomData(),
+            '威海市':randomData(),
+            '日照市':randomData(),
+            '莱芜市':randomData(),
+            '临沂市':randomData(),
+            '德州市':randomData(),
+            '聊城市':randomData(),
+            '滨州市':randomData(),
+            '菏泽市':randomData()
+        };
+
+    }
+
+    // 质量安全合格率 的切换
+    $("#qualityPass li").on("click", function () {
+        var ct = $(this).closest('.moduleTitMore').children("span").text();
+        if (ct == '蔬菜') {
+            qlmodule4Cont = charts.init({id:842,container:"qlmodule4Cont",option:{series: qlmodule4Cont_shucai_series_12}});
+        } else if (ct == '粮油') {
+            qlmodule4Cont = charts.init({id:842,container:"qlmodule4Cont",option:{series: qlmodule4Cont_liangyou_series_12}});
+        } else if (ct == '水产品') {
+            qlmodule4Cont = charts.init({id:842,container:"qlmodule4Cont",option:{series: qlmodule4Cont_shuichanpin_series_12}});
+        } else if (ct == '果品') {
+            qlmodule4Cont = charts.init({id:842,container:"qlmodule4Cont",option:{series: qlmodule4Cont_guopin_series_12}});
+        } else if (ct == '畜禽') {
+            qlmodule4Cont = charts.init({id:842,container:"qlmodule4Cont",option:{series: qlmodule4Cont_xuqin_series_12}});
+        }
+    });
+
+}
+function mapChina(){
+    var mapColor = ['#00edff','#00c9ff','#009bff','#0072eb','#003a78']
+    // var jccs = {
+    //     '济南市':10,
+    //     '青岛市':11,
+    //     '淄博市':6,
+    //     '枣庄市':8,
+    //     '东营市':9,
+    //     '烟台市':12,
+    //     '潍坊市':6,
+    //     '济宁市':8,
+    //     '泰安市':9,
+    //     '威海市':12,
+    //     '日照市':11,
+    //     '莱芜市':9,
+    //     '临沂市':12,
+    //     '德州市':12,
+    //     '聊城市':13,
+    //     '滨州市':15,
+    //     '菏泽市':9
+    // };
+    var data = {};
+    var areaFlag = '';
+
+    function clickHandle(event, data, cmap) {
+        if (data._type == 'area') {
+            var level = cmap.option.level + 1;
+            showMap(data.properties.name, level);
+        }
+    }
+
+    function mouseOverHandle(event, data) {
+        //console.log(data.properties.name)
+        if (data._type == 'area') {
+            if(areaFlag){
+                var $tip = $('#map_tooltip');
+                if (!$tip.length) {
+                    $tip = $('<div id="map_tooltip">');
+                    $('#map').append($tip);
+                }
+                d3.select("#map_tooltip").transition().duration(200).style("opacity", 0.9);
+                d3.select("#map_tooltip").html(tooltipHtml(data.properties.name))
+                    .style("left", (d3.event.pageX - 400) + "px")
+                    .style("top", (d3.event.pageY - 130) + "px");
+            }
+        }
+    }
+
+    function mouseOutHandle(event, data) {
+        if (!$(event.toElement).is('#map_popOver')) {
+            $('#map_popOver').css({
+                display: 'none'
+            });
+        }
+        if (!$(event.toElement).is('#map_tooltip')) {
+            d3.select("#map_tooltip").transition().duration(500).style("opacity", 0);
+        }
+        if (!$(event.toElement).is('#bar_tooltip')) {
+            $('#bar_tooltip').stop().fadeOut();
+        }
+    }
+
+    function tooltipHtml(n) {
+        return "<h4 style='color:#FFF;'>" + n + "</h4><table>" +
+            '<div class="tl cfff" style="color:yellow;">检测次数：' + jccs[n] + '</div>'
+    }
+
+    commonLib.CMap.config.baseDir = '../geoJson/';
+
+    function showMap(name, level) {
+        if(name === '山东'&& level == 2){
+            areaFlag = true;
+            var map = new commonLib.CMap({
+                dom: document.getElementById('map'),
+                data: data,
+                mouseOutHandle: mouseOutHandle,
+                mouseOverHandle: mouseOverHandle,
+                clickHandle: level <= 2 ? clickHandle : null,
+                name: name,
+                areaColor: function(d) {
+                    var i = Math.round(Math.random()*4);
+                    return mapColor[i]
+                },
+                level: level == undefined ? 1 : level
+            });
+        }else {
+            var map = new commonLib.CMap({
+                dom: document.getElementById('map'),
+                data: data,
+                mouseOutHandle: mouseOutHandle,
+                mouseOverHandle: mouseOverHandle,
+                clickHandle: level <= 2 ? clickHandle : null,
+                name: name,
+                level: level == undefined ? 1 : level
+            });
+            areaFlag = false;
+        }
+
+        return map;
+    }
+
+    var cmap = showMap('china', 1);
+}
+function mapShandong(){
+    var mapColor = ['#00edff','#00c9ff','#009bff','#0072eb','#003a78']
+    var jccs = {
+        '济南市':10,
+        '青岛市':11,
+        '淄博市':6,
+        '枣庄市':8,
+        '东营市':9,
+        '烟台市':12,
+        '潍坊市':6,
+        '济宁市':8,
+        '泰安市':9,
+        '威海市':12,
+        '日照市':11,
+        '莱芜市':9,
+        '临沂市':12,
+        '德州市':12,
+        '聊城市':13,
+        '滨州市':15,
+        '菏泽市':9
+    };
+    var data = {};
+    var areaFlag = '';
+
+    function clickHandle(event, data, cmap) {
+        if (data._type == 'area') {
+            var level = cmap.option.level + 1;
+            showMap(data.properties.name, level);
+        }
+
+    }
+
+    function mouseOverHandle(event, data) {
+        //console.log(data.properties.name)
+        if (data._type == 'area') {
+            if(areaFlag){
+                var $tip = $('#map_tooltip');
+                if (!$tip.length) {
+                    $tip = $('<div id="map_tooltip">');
+                    $('#map').append($tip);
+                }
+                d3.select("#map_tooltip").transition().duration(200).style("opacity", 0.9);
+                d3.select("#map_tooltip").html(tooltipHtml(data.properties.name))
+                    .style("left", (d3.event.pageX - 400) + "px")
+                    .style("top", (d3.event.pageY - 130) + "px");
+            }
+        }
+    }
+
+    function mouseOutHandle(event, data) {
+        if (!$(event.toElement).is('#map_popOver')) {
+            $('#map_popOver').css({
+                display: 'none'
+            });
+        }
+        if (!$(event.toElement).is('#map_tooltip')) {
+            d3.select("#map_tooltip").transition().duration(500).style("opacity", 0);
+        }
+        if (!$(event.toElement).is('#bar_tooltip')) {
+            $('#bar_tooltip').stop().fadeOut();
+        }
+    }
+
+    function tooltipHtml(n) {
+        return "<h4>" + n + "</h4><table>" +
+            '<div class="tl cfff">检测次数：' + jccs[n] + '</div>'
+    }
+
+    commonLib.CMap.config.baseDir = '../geoJson/';
+
+    function showMap(name, level) {
+        if(name === '山东'&& level == 2){
+            areaFlag = true;
+            var map = new commonLib.CMap({
+                dom: document.getElementById('map'),
+                data: data,
+                mouseOutHandle: mouseOutHandle,
+                mouseOverHandle: mouseOverHandle,
+                clickHandle: level <= 2 ? clickHandle : null,
+                name: name,
+                areaColor: function(d) {
+                    //console.log(d);
+                    var i = Math.round(Math.random()*4);
+                    return mapColor[i]
+                },
+                level: level == undefined ? 1 : level
+            });
+        }else {
+            var map = new commonLib.CMap({
+                dom: document.getElementById('map'),
+                data: data,
+                mouseOutHandle: mouseOutHandle,
+                mouseOverHandle: mouseOverHandle,
+                clickHandle: level <= 2 ? clickHandle : null,
+                name: name,
+                level: level == undefined ? 1 : level
+            });
+            areaFlag = false;
+        }
+
+        return map;
+    }
+
+    var cmap = showMap('山东', 2);
+}
+$('.mapChina').on('click', function() {
+    mapChina();
+});
+$('.mapShandong').on('click', function() {
+    mapShandong();
+});
+
+
+</script>
+</body>
+</html>
